@@ -4,7 +4,7 @@ public class Docente {
 	private String nome;
 	private String cognome;
 	private String cvdocente;
-	private long coddcocente;
+	private long coddocente;
 	
 	public String getNome() {
 		return nome;
@@ -25,10 +25,10 @@ public class Docente {
 		this.cvdocente = cvdocente;
 	}
 	public long getCoddcocente() {
-		return coddcocente;
+		return coddocente;
 	}
 	public void setCoddcocente(long coddcocente) {
-		this.coddcocente = coddcocente;
+		this.coddocente = coddcocente;
 	}
 	
 }
