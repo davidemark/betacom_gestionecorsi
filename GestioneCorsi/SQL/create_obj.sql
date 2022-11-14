@@ -1,10 +1,10 @@
-create table Amministratore(
-codadmin int,
+create table amministratore(
+codadmin varchar2(15),
 nomeadmin varchar2(30) not null,
 cognome varchar2(30) not null,
 constraint p_codadmin primary key (codadmin));
 
-create table Corso(
+create table corso(
 codcorso int,
 nomecorso varchar2(30) not null,
 datainiziocorso Date not null,
@@ -14,14 +14,14 @@ commenticorso varchar2(300) not null,
 aulacorso varchar2(3) not null,
 constraint p_codcorso primary key (codcorso));
 
-create table Corsista(
+create table corsista(
 codcorsista int,
 nomecorsista varchar2(30) not null,
-cognomecorsista Date not null,
+cognomecorsista varchar2(30) not null,
 precedentiformativi number (1) not null,
 constraint p_codcorsista primary key (codcorsista));
 
-create table Docente(
+create table docente(
 coddocente int,
 nomedocente varchar2(30) not null,
 cognomedocente varchar2(30) not null,
