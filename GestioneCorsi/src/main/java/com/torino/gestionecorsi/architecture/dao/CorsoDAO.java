@@ -1,7 +1,10 @@
 package com.torino.gestionecorsi.architecture.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.RowSetProvider;
@@ -27,25 +30,70 @@ public class CorsoDAO implements GenericDAO<Corso>, DAOConstants {
 	@Override
 	public void create(Connection conn, Corso entity) throws DAOException {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void delete(Connection conn, Corso entity) throws DAOException {
-		
-
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement(DELETE_CORSO);
+			ps.setLong(1, entity.getCodcorso());
+			ps.execute();
+			conn.commit();
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
 	}
 
 	@Override
-	public Corso getByCod(Connection conn, long id) throws DAOException {
-		
-		return null;
+	public Corso getByCod(Connection conn, long cod) throws DAOException {
+		Corso corso = null;
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement(SELECT_CORSO_BY_ID);
+			ps.setLong(1, cod);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				corso = new Corso();
+				corso.setCodcorso(rs.getLong(1));
+				corso.setNome(rs.getString(2));
+				corso.setDataInizio(rs.getDate(3));
+				corso.setDataFine(rs.getDate(4));
+				corso.setCosto(rs.getDouble(5));
+				corso.setCommento(rs.getString(6));
+				corso.setAula(rs.getString(7));
+			}
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
+		return corso;
 	}
 
 	@Override
 	public Corso[] getAll(Connection conn) throws DAOException {
-		
-		return null;
+		Corso[] corsi = null;
+		try {
+			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet rs = stmt.executeQuery(SELECT_CORSO);
+			rs.last();
+
+			corsi = new Corso[rs.getRow()];
+			rs.beforeFirst();
+			for (int i = 0; rs.next(); i++) {
+				Corso co = new Corso();
+				co.setCodcorso(rs.getLong(1));
+				co.setNome(rs.getString(2));
+				co.setDataInizio(rs.getDate(3));
+				co.setDataFine(rs.getDate(4));
+				co.setCosto(rs.getDouble(5));
+				co.setCommento(rs.getString(6));
+				co.setAula(rs.getString(7));
+				corsi[i] = co;
+			}
+		} catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
+		return corsi;
 	}
 
 }
