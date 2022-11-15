@@ -3,8 +3,8 @@ package com.torino.gestionecorsi.businesscomponent.model;
 public class Corsista {
 	private String nome;
 	private String cognome;
-	private String precedentiformativi;
-	private String codcorsista;
+	private boolean precedentiformativi;
+	private long codcorsista;
 	public String getNome() {
 		return nome;
 	}
@@ -17,16 +17,16 @@ public class Corsista {
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
-	public String getPrecedentiformativi() {
+	public boolean isPrecedentiformativi() {
 		return precedentiformativi;
 	}
-	public void setPrecedentiformativi(String precedentiformativi) {
+	public void setPrecedentiformativi(boolean precedentiformativi) {
 		this.precedentiformativi = precedentiformativi;
 	}
-	public String getCodcorsista() {
+	public long getCodcorsista() {
 		return codcorsista;
 	}
-	public void setCodcorsista(String codcorsista) {
+	public void setCodcorsista(long codcorsista) {
 		this.codcorsista = codcorsista;
 	}
 	
