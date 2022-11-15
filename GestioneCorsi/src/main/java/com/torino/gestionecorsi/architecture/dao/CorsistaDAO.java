@@ -40,7 +40,7 @@ public class CorsistaDAO implements GenericDAO<Corsista>, DAOConstants {
 	   rowSet.updateLong(1, entity.getCodcorsista());
 	   rowSet.updateString(2, entity.getNome());
 	   rowSet.updateString(3, entity.getCognome());
-	   rowSet.updateBoolean(4, entity.isPrecedentiformativi());
+	   rowSet.updateInt(4, entity.isPrecedentiformativi()?1:0 );
 	  
 	   rowSet.insertRow();
 	   rowSet.moveToCurrentRow();
@@ -72,7 +72,7 @@ public class CorsistaDAO implements GenericDAO<Corsista>, DAOConstants {
 				corsista.setCodcorsista(rs.getLong(1));
 				corsista.setNome(rs.getString(2));
 				corsista.setCognome(rs.getString(3));
-				corsista.setPrecedentiformativi(rs.getBoolean(4));
+				corsista.setPrecedentiformativi(rs.getInt(4)==1);
 				
 			}
 		}catch(SQLException sql) {
@@ -98,7 +98,7 @@ public class CorsistaDAO implements GenericDAO<Corsista>, DAOConstants {
 				a.setCodcorsista(rs.getLong(1));
 				a.setNome(rs.getString(2));
 				a.setCognome(rs.getString(3));
-				a.setPrecedentiformativi(rs.getBoolean(4));
+				a.setPrecedentiformativi(rs.getInt(4)==1);
 				
 				corsisti[i]=a;
 			}

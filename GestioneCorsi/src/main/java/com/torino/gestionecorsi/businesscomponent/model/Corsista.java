@@ -29,6 +29,11 @@ public class Corsista {
 	public void setCodcorsista(long codcorsista) {
 		this.codcorsista = codcorsista;
 	}
+	@Override
+	public String toString() {
+		return "Corsista [nome=" + nome + ", cognome=" + cognome + ", precedentiformativi=" + precedentiformativi
+				+ ", codcorsista=" + codcorsista + "]";
+	}
 	
 	
 	

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.sql.Connection;
+import java.sql.Statement;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -42,7 +43,10 @@ class CorsistaDAOTest {
 	static void tearDownAfterClass() throws Exception {
 		
 		try {
-			CorsistaDAO.getFactory().delete(conn, corsista);
+			//conn = DBAccess.getConnection();
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate("Delete from corsista where codcorsista = 6");
+			conn.commit();
 			DBAccess.closeConnection();
 		} catch( DAOException exc) {
 			exc.printStackTrace();
@@ -80,7 +84,8 @@ class CorsistaDAOTest {
 	@Order(3)
 	void testgetByCod() {
 		try {
-			CorsistaDAO.getFactory().getByCod(conn,4);
+			Corsista cor = CorsistaDAO.getFactory().getByCod(conn,6);
+			System.out.println(cor.toString());
 		}catch(DAOException exc) {
 			exc.printStackTrace();
 			fail("Motivo: "+exc.getMessage());
