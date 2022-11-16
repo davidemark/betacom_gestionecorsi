@@ -11,7 +11,7 @@ if (session.getAttribute("nomeadmin") != null) {
 <%@ include file="../CDN/CDN.html"%>
 <meta charset="ISO-8859-1">
 <title>Lista Studenti</title>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <jsp:include page="../componenti/navbar.jsp" />

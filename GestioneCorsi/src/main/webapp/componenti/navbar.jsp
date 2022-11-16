@@ -1,5 +1,4 @@
-<nav class="navbar navbar-inverse" style="background-color: #33383c;">
-
+<nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -21,24 +20,23 @@
 			<ul class="nav navbar-nav navbar-right">
 				<!-- TODO: correggere path login -->
 				<li><a
-					href="/<%=application.getServletContextName()%>login.jsp"><span
+					href="/GestioneCorsi/utilities/login.jsp"><span
 						class="glyphicon glyphicon-log-in"></span> Login</a></li>
 			</ul>
 			<%
-			} else { 
+			} else {
 			%>
 			<!-- TODO: da sistemare -->
 			<ul class="nav navbar-nav">
 				<li><a href="acquisti.jsp"><span
 						class="glyphicon glyphicon-user"></span> Inserisci Corsista</a></li>
 				<li><a href="carrello.jsp"><span
-						class="glyphicon glyphicon-shopping-cart"></span> Riepilogo
-						carrello</a></li>
+						class="glyphicon glyphicon-shopping-cart"></span> Riepilogo</a></li>
 			</ul>
 			
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#"><span class="glyphicon glyphicon-user"></span> <%=nomeadmin%></a></li>
-				<li><a href="utilities/logout.jsp"><span
+				<li><a href="/GestioneCorsi/utilities/logout.jsp"><span
 						class="glyphicon glyphicon-off"></span> Logout</a></li>
 			</ul>
 			<%
