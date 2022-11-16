@@ -1,3 +1,6 @@
+<%
+if (session.getAttribute("codadmin") != null) {
+%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -10,6 +13,11 @@
 </head>
 <body>
 <jsp:include page="componenti/navbar.jsp" />
-<h1>Prova</h1>
+<h1>Benvenuto</h1>
 </body>
 </html>
+<%
+} else {
+	response.sendRedirect("utilities/login.jsp");
+}
+%>

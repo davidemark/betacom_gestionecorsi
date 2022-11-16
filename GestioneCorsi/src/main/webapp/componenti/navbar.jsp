@@ -12,20 +12,22 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<%
-			String username = (String) session.getAttribute("username");
-			if (username == null) {
+			String codadmin = (String) session.getAttribute("codadmin");
+			if (codadmin == null) {
 			%>
 			<ul class="nav navbar-nav">
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-			<!-- TODO: correggere path login -->
+				<!-- TODO: correggere path login -->
 				<li><a
 					href="/<%=application.getServletContextName()%>login.jsp"><span
 						class="glyphicon glyphicon-log-in"></span> Login</a></li>
 			</ul>
 			<%
 			} else {
+			String nomeadmin = (String) session.getAttribute("nomeadmin");
 			%>
+			<!-- TODO: da sistemare -->
 			<ul class="nav navbar-nav">
 				<li><a href="acquisti.jsp"><span
 						class="glyphicon glyphicon-user"></span>Scelta articoli</a></li>
@@ -33,10 +35,10 @@
 						class="glyphicon glyphicon-shopping-cart"></span>Riepilogo
 						carrello</a></li>
 			</ul>
-			<!-- TODO: correggere path logout -->
+			
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span><%=username%></a></li>
-				<li><a href="logout.jsp"><span
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span><%=nomeadmin%></a></li>
+				<li><a href="utilities/logout.jsp"><span
 						class="glyphicon glyphicon-off"></span> Logout</a></li>
 			</ul>
 			<%

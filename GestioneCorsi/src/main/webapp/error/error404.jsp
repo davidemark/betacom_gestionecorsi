@@ -19,7 +19,7 @@
 		</header>
 	 	<div class="panel-body">
 	 		<p>Per segnalare un eventuale problema:&nbsp;
-	 		<a href="mailto:max@tin.it">Contattare il supporto tecnico</a>
+	 		<a href="mailto:admin@admin.it">Contattare il supporto tecnico</a>
 			<p>
 	 		<input type="button" class="btn btn-default" 
 	 		value="Indietro" onclick="window.history.back()" /> 
