@@ -2,6 +2,7 @@ create table amministratore(
 codadmin varchar2(15),
 nomeadmin varchar2(30) not null,
 cognome varchar2(30) not null,
+CONSTRAINT uc_amministratore UNIQUE(nomeadmin, cognome),
 constraint p_codadmin primary key (codadmin));
 
 create table corso(
