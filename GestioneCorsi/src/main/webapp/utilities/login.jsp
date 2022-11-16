@@ -1,11 +1,14 @@
 <!-- controllo di accesso alla pagina login  -->
-<!-- TODO: modificare questo scriplet -->
 <%
-if (session.getAttribute("admin") != null) {
-	response.sendRedirect("acquisti.jsp");
-} else if (session.getAttribute("admin") != null) {
-	session.getAttribute("admin/admin.jsp");
+if (session.getAttribute("nomeadmin") != null && session.getAttribute("cognomeadmin")!=null) {
+	response.sendRedirect("index.jsp");
 } else {
+%>
+<%
+	if(session.getAttribute("conto")==null){
+		Integer conto = 5;
+		session.setAttribute("conto", conto);
+	}
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -27,7 +30,8 @@ if (session.getAttribute("admin") != null) {
 		<!-- TODO: da sistemare il form action="/<%=application.getServletContextName()%>/controllo"
 			method="post" -->
 		<!-- nomeadmin -->
-		<form class="form-horizontal">
+		<form action="/<%=application.getServletContextName()%>/controllo"
+			method="post" class="form-horizontal">
 			<div class="form-group">
 				<label class="col-md-1 control-label">Nome Admin</label>
 				<div class="col-md-4 inputGroupContainer">
@@ -76,6 +80,7 @@ if (session.getAttribute("admin") != null) {
 
 		</form>
 	</div>
+	<h1><%=session.getAttribute("conto") %></h1>
 	<footer><%@ include file="../componenti/footer.html"%></footer>
 </body>
 </html>
