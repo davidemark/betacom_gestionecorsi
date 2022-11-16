@@ -16,7 +16,8 @@ import org.junit.jupiter.api.Order;
 
 @TestMethodOrder(OrderAnnotation.class)
 class DocenteDAOTest {
-	private static Connection conn;
+
+private static Connection conn;
 	
 
 	@BeforeAll
@@ -64,6 +65,3 @@ class DocenteDAOTest {
 			}
 		}
 	}
-
-
-
