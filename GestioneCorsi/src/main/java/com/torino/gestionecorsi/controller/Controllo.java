@@ -6,36 +6,50 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-/**
- * Servlet implementation class Controllo
- */
-@WebServlet("/Controllo")
+import com.torino.gestionecorsi.businesscomponent.utilities.Login;
+
+
+@WebServlet("/controllo")
 public class Controllo extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Controllo() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	private static final long serialVersionUID = 7427356753542790548L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String nomeadmin = request.getParameter("nomeadmin");
+		String cognomeadmin = request.getParameter("cognomeadmin");
+		String codadmin = request.getParameter("codadmin");
+		
+		HttpSession session = request.getSession();
+		String adminpass=null;
+		int conto = (Integer)session.getAttribute("conto");
+		if (nomeadmin != null && cognomeadmin != null && codadmin != null ) {
+			try {
+				Login l = new Login();
+				adminpass = l.getCodAdmin(nomeadmin, cognomeadmin);
+				if (adminpass!=null && adminpass.equals(codadmin)) {
+					session.setAttribute("nomeadmin", nomeadmin);
+					session.setAttribute("cognomeadmin", cognomeadmin);
+					response.sendRedirect("index.jsp");
+				}else if(--conto >0){
+					
+					session.setAttribute("conto", (Integer)conto);
+					response.sendRedirect("utilities/login.jsp");
+				}else {
+					response.sendRedirect("utilities/tentativiesauriti.jsp");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+				throw new ServletException(e.getMessage());
+			}
+			
+			
+		}else {
+			response.sendRedirect("utilities/login.jsp");
+		}
+		
+		
 	}
 
 }
