@@ -29,7 +29,6 @@ public class CorsoCorsistaDAO implements GenericDAO<CorsoCorsista>, DAOConstants
 		}
 	}
 	
-
 	@Override
 	public void create(Connection conn, CorsoCorsista entity) throws DAOException {
 		try {
@@ -90,6 +89,7 @@ public class CorsoCorsistaDAO implements GenericDAO<CorsoCorsista>, DAOConstants
 		}
 		return corcor;
 	}
+	
 	public Corso[] getAllByCorsista(Connection conn, Corsista corsista) throws DAOException{
 		Corso[] corcor = null;
 		PreparedStatement ps;
