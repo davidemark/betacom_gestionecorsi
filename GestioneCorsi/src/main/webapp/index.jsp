@@ -3,10 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@ include file="CDN/CDN.html"%>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Homepage</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<jsp:include page="componenti/navbar.jsp" />
 <h1>Prova</h1>
 </body>
 </html>
