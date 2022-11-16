@@ -4,22 +4,22 @@ import java.sql.SQLException;
 
 public class DAOException extends SQLException {
 	private static final long serialVersionUID = 7253825451878940653L;
-	
+
 	private final static int ORA1017 = 1017;
 	private final static int ORA17002 = 17002;
 	private final static int ORA00001 = 0;
-	
+
 	private String message;
-	
+
 	@Override
 	public String getMessage() {
 		return message;
 	}
-	
+
 	public DAOException(SQLException sql) {
 		String chiave = "";
-		if(sql != null) {
-			switch(sql.getErrorCode()) {
+		if (sql != null) {
+			switch (sql.getErrorCode()) {
 			case ORA1017:
 				chiave = "Credenziali di accesso errate";
 				log(sql);
@@ -33,24 +33,19 @@ public class DAOException extends SQLException {
 				log(sql);
 				break;
 			default:
-				chiave="Eccexione SQL non prevista";
+				chiave = "Eccexione SQL non prevista";
 				log(sql);
 			}
 		}
-		message=chiave;
+		message = chiave;
 	}
-	
+
 	private void log(SQLException sql) {
 		sql.printStackTrace();
-		System.err.println("Motivo: "+sql.getMessage());
-		System.err.println("Codice: "+sql.getErrorCode());
-		System.err.println("Stato app: "+sql.getSQLState());
-		System.err.println("Causa: "+sql.getCause());
+		System.err.println("Motivo: " + sql.getMessage());
+		System.err.println("Codice: " + sql.getErrorCode());
+		System.err.println("Stato app: " + sql.getSQLState());
+		System.err.println("Causa: " + sql.getCause());
 	}
-	
-	
-	
+
 }
-
-	
-

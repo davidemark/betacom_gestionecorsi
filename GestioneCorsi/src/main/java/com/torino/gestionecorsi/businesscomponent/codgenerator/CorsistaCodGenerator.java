@@ -39,5 +39,5 @@ public class CorsistaCodGenerator implements DAOConstants {
 		}
 		return cod;
 	}
-	
+
 }

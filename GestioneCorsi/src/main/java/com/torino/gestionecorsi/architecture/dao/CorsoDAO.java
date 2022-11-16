@@ -14,7 +14,7 @@ import com.torino.gestionecorsi.businesscomponent.model.Corso;
 public class CorsoDAO implements GenericDAO<Corso>, DAOConstants {
 
 	private CachedRowSet rowSet;
-	
+
 	public static CorsoDAO getFactory() throws DAOException {
 		return new CorsoDAO();
 	}
@@ -53,7 +53,7 @@ public class CorsoDAO implements GenericDAO<Corso>, DAOConstants {
 			ps = conn.prepareStatement(SELECT_CORSO_BY_ID);
 			ps.setLong(1, cod);
 			ResultSet rs = ps.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				corso = new Corso();
 				corso.setCodcorso(rs.getLong(1));
 				corso.setNome(rs.getString(2));

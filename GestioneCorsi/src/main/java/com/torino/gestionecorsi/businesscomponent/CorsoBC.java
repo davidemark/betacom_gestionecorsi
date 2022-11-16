@@ -14,16 +14,17 @@ public class CorsoBC {
 	public CorsoBC() throws ClassNotFoundException, DAOException, IOException {
 		conn = DBAccess.getConnection();
 	}
+	
+	public void delete(Corso corso) throws DAOException {
+		CorsoDAO.getFactory().delete(conn, corso);
+	}
 
 	public Corso findByCod(long cod) throws DAOException {
 		return CorsoDAO.getFactory().getByCod(conn, cod);
 	}
 
-	public Corso[] getArticoli() throws DAOException {
+	public Corso[] getCorsi() throws DAOException {
 		return CorsoDAO.getFactory().getAll(conn);
 	}
 
-	public void delete(Corso corso) throws DAOException {
-		CorsoDAO.getFactory().delete(conn, corso);
-	}
 }
