@@ -7,6 +7,8 @@ import com.torino.gestionecorsi.architecture.dao.CorsoCorsistaDAO;
 import com.torino.gestionecorsi.architecture.dao.DAOException;
 
 import com.torino.gestionecorsi.architecture.dbaccess.DBAccess;
+import com.torino.gestionecorsi.businesscomponent.model.Corsista;
+import com.torino.gestionecorsi.businesscomponent.model.Corso;
 import com.torino.gestionecorsi.businesscomponent.model.CorsoCorsista;
 
 
@@ -20,5 +22,13 @@ private Connection conn;
 	
 	public void create(CorsoCorsista oa) throws DAOException {
 		CorsoCorsistaDAO.getFactory().create(conn, oa);
+	}
+	
+	public Corso[] getCorsiByCorsista(Corsista corsista) throws DAOException {
+		return CorsoCorsistaDAO.getFactory().getAllByCorsista(conn, corsista);
+	}
+	
+	public Corsista[] getCorsistiByCorso(Corso corso) throws DAOException {
+		return CorsoCorsistaDAO.getFactory().getAllByCorso(conn, corso);
 	}
 }
