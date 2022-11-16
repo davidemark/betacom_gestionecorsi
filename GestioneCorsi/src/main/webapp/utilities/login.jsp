@@ -19,7 +19,7 @@ if (session.getAttribute("admin") != null) {
 </head>
 <body>
 	<jsp:include page="../componenti/navbar.jsp" />
-	<div class="container bg-warning">
+	<div class="container bg-warning center-login" >
 		<header class="page-header">
 			<h3>Inserire i dati per accedere</h3>
 		</header>
@@ -34,7 +34,7 @@ if (session.getAttribute("admin") != null) {
 					<div class="input-group">
 						<span class="input-group-addon"><i
 							class="glyphicon glyphicon-user"></i></span><input type="text"
-							name="nomeadmin" placeholder="Mario" class="form-control"
+							name="nomeadmin" placeholder="Nome" class="form-control"
 							id="nomeadmin">
 					</div>
 				</div>
@@ -47,7 +47,7 @@ if (session.getAttribute("admin") != null) {
 					<div class="input-group">
 						<span class="input-group-addon"><i
 							class="glyphicon glyphicon-user"></i></span><input type="text"
-							name="cognomeadmin" placeholder="Rossi" class="form-control"
+							name="cognomeadmin" placeholder="Cognome" class="form-control"
 							id="cognomeadmin">
 					</div>
 				</div>
