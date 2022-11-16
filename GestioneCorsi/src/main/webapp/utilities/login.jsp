@@ -77,7 +77,7 @@ if (session.getAttribute("nomeadmin") != null && session.getAttribute("cognomead
 					</button>
 				</div>
 			</div>
-
+  
 		</form>
 	</div>
 	<h1><%=session.getAttribute("conto") %></h1>
