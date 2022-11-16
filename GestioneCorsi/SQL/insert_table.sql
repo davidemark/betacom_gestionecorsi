@@ -15,7 +15,7 @@ insert into corsista values(corsista_seq.nextval, 'Lucio', 'Mastropietro', 1);
 insert into corsista values(corsista_seq.nextval, 'Davide Mark', 'Sardella', 0);
 insert into corsista values(corsista_seq.nextval, 'Andrea', 'Toraldo', 1);
 insert into corsista values(corsista_seq.nextval, 'Gabriele', 'D''Ortenzi', 0);
-insert into corsista values(corsista_seq.nextval, 'Riccardo', 'Mastropietro', 1);
+insert into corsista values(corsista_seq.nextval, 'Riccardo', 'Padoan', 1);
 
 -- docente
 insert into docente values(1, 'Massimo', 'Ghianda', 'JAVA, PHP, XML, CSS, HTML, JS, SPRING, C, C++, PHYTON');

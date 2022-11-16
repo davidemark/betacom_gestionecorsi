@@ -63,7 +63,7 @@ public class CorsistaDAO implements GenericDAO<Corsista>, DAOConstants {
 		Corsista corsista = null;
 		PreparedStatement ps;
 		try {
-			ps = conn.prepareStatement(SELECT_CORSISTA_GETBYCOD);
+			ps = conn.prepareStatement(SELECT_CORSISTA_GET_BY_COD);
 			ps.setLong(1, cod);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
