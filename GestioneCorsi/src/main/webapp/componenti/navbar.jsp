@@ -25,7 +25,7 @@
 						class="glyphicon glyphicon-log-in"></span> Login</a></li>
 			</ul>
 			<%
-			} else {
+			} else { 
 			%>
 			<!-- TODO: da sistemare -->
 			<ul class="nav navbar-nav">
