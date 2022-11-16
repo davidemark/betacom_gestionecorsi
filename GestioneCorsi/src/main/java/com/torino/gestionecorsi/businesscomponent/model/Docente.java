@@ -38,4 +38,11 @@ public class Docente {
 		this.coddocente = coddcocente;
 	}
 
+	@Override
+	public String toString() {
+		return "Docente [nome=" + nome + ", cognome=" + cognome + ", cvdocente=" + cvdocente + ", coddocente="
+				+ coddocente + "]";
+	}
+
+	
 }
