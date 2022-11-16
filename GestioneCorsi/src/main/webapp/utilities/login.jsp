@@ -1,11 +1,8 @@
 <!-- controllo di accesso alla pagina login  -->
-<!-- TODO: modificare questo scriplet -->
 <%
 if (session.getAttribute("nomeadmin") != null && session.getAttribute("cognomeadmin")!=null) {
 	response.sendRedirect("index.jsp");
-} /*else if (session.getAttribute("nomeadmin") != null) {
-	session.getAttribute("admin/admin.jsp");
-} */else {
+} else {
 %>
 <%
 	if(session.getAttribute("conto")==null){

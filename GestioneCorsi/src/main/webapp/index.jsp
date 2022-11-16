@@ -14,6 +14,7 @@ if (session.getAttribute("nomeadmin") != null) {
 <body>
 <jsp:include page="componenti/navbar.jsp" />
 <h1>Benvenuto</h1>
+<footer><%@ include file="../componenti/footer.html"%></footer>
 </body>
 </html>
 <%
