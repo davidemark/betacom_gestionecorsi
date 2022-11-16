@@ -31,7 +31,7 @@ public class Controllo extends HttpServlet {
 				if (adminpass!=null && adminpass.equals(codadmin)) {
 					session.setAttribute("nomeadmin", nomeadmin);
 					session.setAttribute("cognomeadmin", cognomeadmin);
-					response.sendRedirect("index.jsp");
+					response.sendRedirect("utilities/studenti.jsp");
 				}else if(--conto >0){
 					
 					session.setAttribute("conto", (Integer)conto);
