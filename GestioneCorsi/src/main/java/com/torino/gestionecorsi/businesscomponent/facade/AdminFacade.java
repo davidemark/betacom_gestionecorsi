@@ -83,7 +83,7 @@ public class AdminFacade {
 		return ccBC.getCorsiByCorsista(corsista);
 	}
 
-	public Corsista[] getCorsistiByCorsio(Corso corso) throws ClassNotFoundException, DAOException, IOException {
+	public Corsista[] getCorsistiByCorsi(Corso corso) throws ClassNotFoundException, DAOException, IOException {
 		ccBC = new CorsoCorsistaBC();
 		return ccBC.getCorsistiByCorso(corso);
 	}
