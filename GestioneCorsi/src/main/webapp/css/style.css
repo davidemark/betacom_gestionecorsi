@@ -5,6 +5,7 @@ html {
 
 body {
 	background-color: #f4f4f4;
+
 }
 
 nav.navbar {
@@ -18,13 +19,13 @@ nav.navbar {
 	display: flex;
 	justify-content: space-evenly;
 	font-size: 12px;
-	padding: 20px;
+	padding: 30px;
+	width: 100%;
 }
 
 .custom-a {
 	text-align: center;
 	padding-top: 5px;
-	
 }
 
 .custom-corsisti {
