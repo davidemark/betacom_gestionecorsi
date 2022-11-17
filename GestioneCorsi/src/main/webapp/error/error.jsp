@@ -71,5 +71,7 @@
 	</div>
 	<footer class="footer"><%@ include
 			file="../componenti/footer.html"%></footer>
+			
+			
 </body>
 </html>
