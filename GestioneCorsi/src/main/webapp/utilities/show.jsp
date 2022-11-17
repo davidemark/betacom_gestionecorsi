@@ -17,9 +17,12 @@
 	<div class="container">
 
 		<header class="page-header">
+		<%
+		Corsista corsista = (Corsista)session.getAttribute("corsista");
+		%>
 			<h3>
 				Riepilogo dei corsi frequentati da
-				<%=%></h3>
+				<%=corsista.getNome()%></h3>
 		</header>
 
 	</div>

@@ -18,7 +18,6 @@
 			<ul class="nav navbar-nav">
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<!-- TODO: correggere path login -->
 				<li><a href="/GestioneCorsi/utilities/login.jsp"><span
 						class="glyphicon glyphicon-log-in"></span> Login</a></li>
 			</ul>

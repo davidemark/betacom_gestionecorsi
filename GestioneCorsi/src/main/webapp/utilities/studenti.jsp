@@ -28,9 +28,9 @@ if (session.getAttribute("nomeadmin") != null) {
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Nome</th>
-						<th>Cognome</th>
-						<th>Precedenti Formativi</th>
+						<th class="text-center">Nome</th>
+						<th class="text-center">Cognome</th>
+						<th class="text-center">Precedenti Formativi</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -42,15 +42,15 @@ if (session.getAttribute("nomeadmin") != null) {
 						<%
 						//Immagine img = ClientFacade.getInstance().findImmagineById(a[i].getIdArticolo());
 						%>
-						<td><form
+						<td class="text-center"><form
 								action="/GestioneCorsi/show"
 								method="post">
 								<input type="hidden" name="codcorsista"
 									value="<%=c[i].getCodcorsista()%>">
 								<button type="submit"><%=c[i].getNome()%></button>
 							</form></td>
-						<td><%=c[i].getCognome()%></td>
-						<td>
+						<td class="text-center"><%=c[i].getCognome()%></td>
+						<td class="text-center">
 							<%
 							if (c[i].isPrecedentiformativi()) {
 							%>&#10003;<%
@@ -68,7 +68,7 @@ if (session.getAttribute("nomeadmin") != null) {
 		</div>
 	</div>
 
-	<footer class="footer"><%@ include
+	<footer><%@ include
 			file="../componenti/footer.html"%></footer>
 </body>
 </html>

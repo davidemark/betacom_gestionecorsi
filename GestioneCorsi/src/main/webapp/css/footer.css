@@ -1,0 +1,15 @@
+footer {
+	background-color: #33383c;
+	margin-top: 70px;
+	padding: 0px 1px;
+}
+
+footer ul li {
+	padding: 7px 1px;
+}
+
+.fa {
+	color: #9c9c9c;
+	margin-right: 15px;
+	font-size: 14px;
+}

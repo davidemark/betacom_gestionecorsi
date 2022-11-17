@@ -1,6 +1,11 @@
-body{
-	background-color: grey;
-}   
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	background-color: #f4f4f4;
+}
 
 nav.navbar {
 	border-top-left-radius: 0px;
@@ -9,8 +14,25 @@ nav.navbar {
 	border-bottom-right-radius: 0px;
 }
 
-.center-login {
-	margin-bottom: 30px;
+.custom-footer {
+	display: flex;
+	justify-content: space-evenly;
+	font-size: 12px;
+	padding: 20px;
+}
+
+.custom-a {
+	text-align: center;
+	padding-top: 5px;
 	
 }
 
+.custom-corsisti {
+	min-height: 80vh;
+}
+
+@media screen and (max-width: 520px) {
+	.custom-footer {
+	 flex-direction: column;
+	}
+}
