@@ -26,7 +26,7 @@
 			%>
 
 			<ul class="nav navbar-nav">
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+				<li><a href="/GestioneCorsi/utilities/inserisciCorsista.jsp"><span class="glyphicon glyphicon-user"></span>
 						Inserisci Corsista</a></li>
 				<li><a href="/GestioneCorsi/utilities/studenti.jsp"><span
 						class="glyphicon glyphicon-shopping-cart"></span> Lista Corsisti</a></li>

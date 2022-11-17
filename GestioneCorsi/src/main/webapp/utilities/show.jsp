@@ -1,3 +1,5 @@
+<%@page import="com.torino.gestionecorsi.businesscomponent.model.Corso"%>
+<%@page import="com.torino.gestionecorsi.architecture.dao.CorsoCorsistaDAO"%>
 <%@page
 	import="com.torino.gestionecorsi.businesscomponent.model.Corsista"%>
 <%@page
@@ -22,8 +24,12 @@
 		%>
 			<h3>
 				Riepilogo dei corsi frequentati da
-				<%=corsista.getNome()%></h3>
+				<%=corsista.getNome()%>&nbsp;<%=corsista.getCognome()%></h3>
+				
 		</header>
+		<%
+		Corso[] corsi = AdminFacade.getInstance().getCorsiByCorsista(corsista);
+		%>
 
 	</div>
 	<footer><%@ include file="../componenti/footer.html"%></footer>
