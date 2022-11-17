@@ -7,15 +7,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/RimuoviCorso")
+import com.torino.gestionecorsi.businesscomponent.facade.AdminFacade;
+import com.torino.gestionecorsi.businesscomponent.model.Corso;
+
+@WebServlet("/rimuoviCorso")
 public class RimuoviCorso extends HttpServlet {
 
 	private static final long serialVersionUID = 9112435601153320197L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		try {
+			String codcorsoS = request.getParameter("cod");
+			
+			if (codcorsoS != null) {
+				long codcorso = Long.valueOf(codcorsoS);
+				Corso c = new Corso();
+				c.setCodcorso(codcorso);
+				AdminFacade.getInstance().delete(c);
+				response.sendRedirect("utilities/corsi.jsp");
+				
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw new ServletException(e.getMessage());
+		}
 	}
 
 }
