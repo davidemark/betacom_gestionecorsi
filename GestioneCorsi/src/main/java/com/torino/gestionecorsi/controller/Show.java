@@ -24,7 +24,7 @@ public class Show extends HttpServlet {
 			Long codcorsista = Long.valueOf(request.getParameter("codcorsista"));
 			Corsista corsista = AdminFacade.getInstance().findCorsistaByCod(codcorsista);
 			session.setAttribute("corsista", corsista);
-			response.sendRedirect("show.jsp");
+			response.sendRedirect("utilities/show.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ServletException(e.getMessage());

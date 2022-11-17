@@ -32,4 +32,12 @@ insert into docente values(10, 'Giancarlo', 'Magalli', 'JAVA, PHP, XML, CSS, HTM
 -- amministratore
 insert into amministratore values('admin', 'admin', 'admin');
 
+-- corso_corsista
+insert into corso_corsista values (7,1);
+insert into corso_corsista values (9,4);
+insert into corso_corsista values (7,5);
+insert into corso_corsista values (4,1);
+insert into corso_corsista values (5,3);
+insert into corso_corsista values (8,2);
+
 commit
