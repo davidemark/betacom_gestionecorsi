@@ -1,5 +1,6 @@
+
 <%
-if (session.getAttribute("nomeadmin") != null && session.getAttribute("cognomeadmin")!=null) {
+if (session.getAttribute("nomeadmin") != null && session.getAttribute("cognomeadmin") != null) {
 	session.invalidate();
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -30,11 +31,11 @@ if (session.getAttribute("nomeadmin") != null && session.getAttribute("cognomead
 			</div>
 		</div>
 	</div>
-		<footer><%@ include file="../componenti/footer.html"%></footer>
+	<footer><%@ include file="../componenti/footer.html"%></footer>
 </body>
 </html>
 <%
 } else {
-	response.sendRedirect("accessonegato.jsp");
+response.sendRedirect("accessonegato.jsp");
 }
 %>

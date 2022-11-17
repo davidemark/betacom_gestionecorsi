@@ -14,7 +14,7 @@ public class CorsoBC {
 	public CorsoBC() throws ClassNotFoundException, DAOException, IOException {
 		conn = DBAccess.getConnection();
 	}
-	
+
 	public void delete(Corso corso) throws DAOException {
 		CorsoDAO.getFactory().delete(conn, corso);
 	}

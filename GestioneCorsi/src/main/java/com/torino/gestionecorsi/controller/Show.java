@@ -17,17 +17,18 @@ public class Show extends HttpServlet {
 
 	private static final long serialVersionUID = 5554782608003661796L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				HttpSession session = request.getSession();
-				try {
-					Long codcorsista = Long.valueOf(request.getParameter("codcorsista"));
-					Corsista corsista = AdminFacade.getInstance().findCorsistaByCod(codcorsista);
-					session.setAttribute("corsista", corsista);
-					response.sendRedirect("show.jsp");
-				} catch (Exception e) {
-					e.printStackTrace();
-					throw new ServletException(e.getMessage());
-				}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		try {
+			Long codcorsista = Long.valueOf(request.getParameter("codcorsista"));
+			Corsista corsista = AdminFacade.getInstance().findCorsistaByCod(codcorsista);
+			session.setAttribute("corsista", corsista);
+			response.sendRedirect("show.jsp");
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ServletException(e.getMessage());
+		}
 	}
 
 }

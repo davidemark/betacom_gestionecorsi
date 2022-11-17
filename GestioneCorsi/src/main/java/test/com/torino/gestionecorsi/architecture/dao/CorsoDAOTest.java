@@ -21,7 +21,7 @@ import com.torino.gestionecorsi.businesscomponent.model.Corso;
 class CorsoDAOTest {
 
 	private static Connection conn;
-	
+
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		conn = DBAccess.getConnection();
@@ -38,14 +38,14 @@ class CorsoDAOTest {
 			fail("Motivo: " + exc.getMessage());
 		}
 	}
-	
+
 	@Test
 	@Order(2)
 	void testGetAll() {
 		try {
 			Corso[] corsi = CorsoDAO.getFactory().getAll(conn);
 			assertNotNull(corsi);
-			for(Corso c : corsi) {
+			for (Corso c : corsi) {
 				System.out.println(c.toString());
 			}
 		} catch (DAOException exc) {
@@ -53,7 +53,7 @@ class CorsoDAOTest {
 			fail("Motivo: " + exc.getMessage());
 		}
 	}
-	
+
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
 		try {

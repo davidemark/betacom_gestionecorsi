@@ -22,7 +22,7 @@ import com.torino.gestionecorsi.businesscomponent.model.Corsista;
 class CorsistaDAOTest {
 	private static Corsista corsista;
 	private static Connection conn;
-	
+
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		conn = DBAccess.getConnection();
@@ -32,43 +32,43 @@ class CorsistaDAOTest {
 		corsista.setCognome("radeon");
 		corsista.setPrecedentiformativi(true);
 	}
-	
+
 	@Test
 	@Order(1)
 	void testCreate() {
 		try {
 			CorsistaDAO.getFactory().create(conn, corsista);
-			
-		}catch(DAOException exc) {
+
+		} catch (DAOException exc) {
 			exc.printStackTrace();
-			fail("Motivo: "+exc.getMessage());
+			fail("Motivo: " + exc.getMessage());
 		}
 	}
-	
+
 	@Test
 	@Order(2)
 	void testGetAll() {
 		try {
 			Corsista[] utenti = CorsistaDAO.getFactory().getAll(conn);
 			assertNotNull(utenti);
-		}catch(DAOException exc) {
+		} catch (DAOException exc) {
 			exc.printStackTrace();
-			fail("Motivo: "+exc.getMessage());
+			fail("Motivo: " + exc.getMessage());
 		}
 	}
-	
+
 	@Test
 	@Order(3)
 	void testGetByCod() {
 		try {
-			Corsista cor = CorsistaDAO.getFactory().getByCod(conn,6);
+			Corsista cor = CorsistaDAO.getFactory().getByCod(conn, 6);
 			System.out.println(cor.toString());
-		}catch(DAOException exc) {
+		} catch (DAOException exc) {
 			exc.printStackTrace();
-			fail("Motivo: "+exc.getMessage());
+			fail("Motivo: " + exc.getMessage());
 		}
 	}
-	
+
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
 		try {
@@ -76,9 +76,9 @@ class CorsistaDAOTest {
 			stmt.executeUpdate("Delete from corsista where codcorsista = 6");
 			conn.commit();
 			DBAccess.closeConnection();
-		} catch( DAOException exc) {
+		} catch (DAOException exc) {
 			exc.printStackTrace();
-			fail("Motivo: "+exc.getMessage());
+			fail("Motivo: " + exc.getMessage());
 		}
 	}
 

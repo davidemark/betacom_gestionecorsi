@@ -11,24 +11,23 @@ import com.torino.gestionecorsi.businesscomponent.model.Corsista;
 import com.torino.gestionecorsi.businesscomponent.model.Corso;
 import com.torino.gestionecorsi.businesscomponent.model.CorsoCorsista;
 
-
 public class CorsoCorsistaBC {
-private Connection conn;
-	
+	private Connection conn;
+
 	public CorsoCorsistaBC() throws ClassNotFoundException, DAOException, IOException {
-		conn=DBAccess.getConnection();
-		
+		conn = DBAccess.getConnection();
 	}
-	
+
 	public void create(CorsoCorsista oa) throws DAOException {
 		CorsoCorsistaDAO.getFactory().create(conn, oa);
 	}
-	
+
 	public Corso[] getCorsiByCorsista(Corsista corsista) throws DAOException {
 		return CorsoCorsistaDAO.getFactory().getAllByCorsista(conn, corsista);
 	}
-	
+
 	public Corsista[] getCorsistiByCorso(Corso corso) throws DAOException {
 		return CorsoCorsistaDAO.getFactory().getAllByCorso(conn, corso);
 	}
+
 }

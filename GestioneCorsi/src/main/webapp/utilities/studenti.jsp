@@ -42,7 +42,8 @@ if (session.getAttribute("nomeadmin") != null) {
 						<%
 						//Immagine img = ClientFacade.getInstance().findImmagineById(a[i].getIdArticolo());
 						%>
-						<td><form action="/<%=application.getServletContextName()%>/show"
+						<td><form
+								action="/<%=application.getServletContextName()%>/show"
 								method="post">
 								<input type="hidden" name="codcorsista"
 									value="<%=c[i].getCodcorsista()%>">

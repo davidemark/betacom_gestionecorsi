@@ -1,14 +1,14 @@
 <!-- controllo di accesso alla pagina login  -->
 <%
-if (session.getAttribute("nomeadmin") != null && session.getAttribute("cognomeadmin")!=null) {
+if (session.getAttribute("nomeadmin") != null && session.getAttribute("cognomeadmin") != null) {
 	response.sendRedirect("index.jsp");
 } else {
 %>
 <%
-	if(session.getAttribute("conto")==null){
-		Integer conto = 5;
-		session.setAttribute("conto", conto);
-	}
+if (session.getAttribute("conto") == null) {
+	Integer conto = 5;
+	session.setAttribute("conto", conto);
+}
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -22,7 +22,7 @@ if (session.getAttribute("nomeadmin") != null && session.getAttribute("cognomead
 </head>
 <body>
 	<jsp:include page="../componenti/navbar.jsp" />
-	<div class="container bg-warning center-login" >
+	<div class="container bg-warning center-login">
 		<header class="page-header">
 			<h3>Inserire i dati per accedere</h3>
 		</header>
@@ -77,10 +77,10 @@ if (session.getAttribute("nomeadmin") != null && session.getAttribute("cognomead
 					</button>
 				</div>
 			</div>
-  
+
 		</form>
 	</div>
-	<h1><%=session.getAttribute("conto") %></h1>
+	<h1><%=session.getAttribute("conto")%></h1>
 	<footer><%@ include file="../componenti/footer.html"%></footer>
 </body>
 </html>

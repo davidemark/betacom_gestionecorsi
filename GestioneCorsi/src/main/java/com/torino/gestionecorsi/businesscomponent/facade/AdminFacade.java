@@ -18,76 +18,74 @@ public class AdminFacade {
 	private CorsistaBC caBC;
 	private DocenteBC dBC;
 	private CorsoCorsistaBC ccBC;
-	
+
 	private AdminFacade() {
 	}
-	
+
 	public static AdminFacade getInstance() {
-		if(aF==null) {
+		if (aF == null) {
 			aF = new AdminFacade();
 		}
 		return aF;
 	}
-	
-	//corsisti
+
+	// corsisti
 	public Corsista[] getCorsisti() throws ClassNotFoundException, DAOException, IOException {
 		caBC = new CorsistaBC();
 		return caBC.getAll();
 	}
-	
+
 	public Corsista findCorsistaByCod(long cod) throws ClassNotFoundException, DAOException, IOException {
 		caBC = new CorsistaBC();
 		return caBC.getByCod(cod);
 	}
-	
+
 	public void create(Corsista corsista) throws ClassNotFoundException, DAOException, IOException {
 		caBC = new CorsistaBC();
 		caBC.create(corsista);
 	}
-	
-	//corsi
-	public void delete (Corso corso ) throws ClassNotFoundException, DAOException, IOException {
+
+	// corsi
+	public void delete(Corso corso) throws ClassNotFoundException, DAOException, IOException {
 		coBC = new CorsoBC();
 		coBC.delete(corso);
 	}
-	
+
 	public Corso[] getCorsi() throws ClassNotFoundException, DAOException, IOException {
 		coBC = new CorsoBC();
 		return coBC.getCorsi();
 	}
-	
+
 	public Corso findCorsoByCod(long cod) throws ClassNotFoundException, DAOException, IOException {
 		coBC = new CorsoBC();
 		return coBC.findByCod(cod);
 	}
-	
-	//docente
+
+	// docente
 	public Docente[] getDocenti() throws ClassNotFoundException, DAOException, IOException {
 		dBC = new DocenteBC();
 		return dBC.getDocenti();
 	}
-	
+
 	public Docente findDocenteByCod(long cod) throws ClassNotFoundException, DAOException, IOException {
-		dBC= new DocenteBC();
+		dBC = new DocenteBC();
 		return dBC.findByCod(cod);
 	}
-	
-	//corso_corsista
+
+	// corso_corsista
 	public void create(CorsoCorsista corcorsista) throws ClassNotFoundException, DAOException, IOException {
 		ccBC = new CorsoCorsistaBC();
 		ccBC.create(corcorsista);
 	}
-	
+
 	public Corso[] getCorsiByCorsista(Corsista corsista) throws ClassNotFoundException, DAOException, IOException {
 		ccBC = new CorsoCorsistaBC();
 		return ccBC.getCorsiByCorsista(corsista);
 	}
-	
+
 	public Corsista[] getCorsistiByCorsio(Corso corso) throws ClassNotFoundException, DAOException, IOException {
 		ccBC = new CorsoCorsistaBC();
 		return ccBC.getCorsistiByCorso(corso);
 	}
-	
-	
-	
+
 }

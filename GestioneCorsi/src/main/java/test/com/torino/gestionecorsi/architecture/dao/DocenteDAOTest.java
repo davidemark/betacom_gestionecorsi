@@ -13,19 +13,16 @@ import com.torino.gestionecorsi.businesscomponent.model.Docente;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 
-
 @TestMethodOrder(OrderAnnotation.class)
 class DocenteDAOTest {
 
-private static Connection conn;
-	
+	private static Connection conn;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		conn = DBAccess.getConnection();
-		
 	}
-	
+
 	@Test
 	@Order(1)
 	void testGetByCod() {
@@ -36,17 +33,15 @@ private static Connection conn;
 			exc.printStackTrace();
 			fail("Motivo: " + exc.getMessage());
 		}
-		
-		
 	}
-	
+
 	@Test
 	@Order(2)
 	void testGetAll() {
 		try {
 			Docente[] docenti = DocenteDAO.getFactory().getAll(conn);
 			assertNotNull(docenti);
-			for(Docente d : docenti) {
+			for (Docente d : docenti) {
 				System.out.println(d.toString());
 			}
 		} catch (DAOException exc) {
@@ -54,14 +49,15 @@ private static Connection conn;
 			fail("Motivo: " + exc.getMessage());
 		}
 	}
-	
+
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-			try {
-				DBAccess.closeConnection();
-			} catch (DAOException exc) {
-				exc.printStackTrace();
-				fail("Motivo: " + exc.getMessage());
-			}
+		try {
+			DBAccess.closeConnection();
+		} catch (DAOException exc) {
+			exc.printStackTrace();
+			fail("Motivo: " + exc.getMessage());
 		}
 	}
+
+}

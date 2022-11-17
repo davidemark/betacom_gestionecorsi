@@ -10,11 +10,10 @@ import com.torino.gestionecorsi.businesscomponent.model.Docente;
 public class DocenteBC {
 	private Connection conn;
 
-	
 	public DocenteBC() throws ClassNotFoundException, DAOException, IOException {
 		conn = DBAccess.getConnection();
 	}
-	
+
 	public Docente findByCod(long cod) throws DAOException {
 		return DocenteDAO.getFactory().getByCod(conn, cod);
 	}
@@ -24,6 +23,3 @@ public class DocenteBC {
 	}
 
 }
-	
-	
-
