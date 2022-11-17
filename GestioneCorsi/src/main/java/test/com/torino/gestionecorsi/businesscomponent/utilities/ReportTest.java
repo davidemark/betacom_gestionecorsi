@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import com.torino.gestionecorsi.architecture.dao.DAOException;
 import com.torino.gestionecorsi.businesscomponent.model.Corsista;
 import com.torino.gestionecorsi.businesscomponent.model.Corso;
+import com.torino.gestionecorsi.businesscomponent.model.Docente;
 import com.torino.gestionecorsi.businesscomponent.utilities.Report;
 
 class ReportTest {
@@ -95,5 +96,27 @@ class ReportTest {
 			fail("Motivo: " + exc.getMessage());
 		}
 	}
+	
+	@Test
+	void testCommenti() {
+		try {
+			System.out.println(report.getCommenti());
+		}catch (DAOException exc) {
+			exc.printStackTrace();
+			fail("Motivo: " + exc.getMessage());
+		}
+	}
+	
+	@Test
+	void testDocentePopolare(){
+		try {
+			Docente d = report.getDocentePopolare();
+			System.out.println(d!=null?d.toString():"null");
+		}catch (Exception exc) {
+			exc.printStackTrace();
+			fail("Motivo: " + exc.getMessage());
+		}
+	}
+	
 
 }

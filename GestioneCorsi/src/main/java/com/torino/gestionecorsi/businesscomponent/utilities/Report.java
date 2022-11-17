@@ -6,20 +6,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import com.torino.gestionecorsi.architecture.dao.CorsistaDAO;
 import com.torino.gestionecorsi.architecture.dao.CorsoCorsistaDAO;
 import com.torino.gestionecorsi.architecture.dao.CorsoDAO;
 import com.torino.gestionecorsi.architecture.dao.DAOConstants;
 import com.torino.gestionecorsi.architecture.dao.DAOException;
+import com.torino.gestionecorsi.architecture.dao.DocenteDAO;
 import com.torino.gestionecorsi.architecture.dbaccess.DBAccess;
 import com.torino.gestionecorsi.businesscomponent.model.Corsista;
 import com.torino.gestionecorsi.businesscomponent.model.Corso;
+import com.torino.gestionecorsi.businesscomponent.model.Docente;
 
 public class Report implements DAOConstants{
 	Connection conn;
+	Map<Long, Integer> mappaDocenti;
 	
 	public Report() throws ClassNotFoundException, DAOException, IOException {
 		conn = DBAccess.getConnection();
@@ -102,7 +108,25 @@ public class Report implements DAOConstants{
 	}
 	
 	//numero di commenti presenti 
-		//domanda massimo
+		//select count(commenti) from corso;
+	public int getCommenti() throws DAOException {
+		int commenti = 0;
+		try {
+			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+			ResultSet rs = stmt.executeQuery(/*SELECT_COMMENTI*/"select count(commenticorso) from corso");
+			
+			
+			rs.beforeFirst();
+			rs.next();
+			commenti = (int)rs.getInt(1);
+			rs.next();
+			rs.close();
+		}catch (SQLException sql) {
+			throw new DAOException(sql);
+		}
+		return commenti;
+	}
 	
 	//elenco di corsisti
 	public Corsista[] getCorsisti() throws DAOException {
@@ -110,8 +134,49 @@ public class Report implements DAOConstants{
 	}
 	
 	//docente con più tipologie di corso
-		//chiedere a massimo
+	public Docente getDocentePopolare() throws DAOException {
+		Corso[]corsi = CorsoDAO.getFactory().getAll(conn);
+		/*for(Corso c : corsi)
+			System.out.println(c.toString());*/
+		//System.out.println();
+		mappaDocenti = new HashMap<Long, Integer>();
+		for(Corso c:corsi) {
+			//System.out.println(c.toString());
+			aggiungi(mappaDocenti, c.getCoddocente());
+			
+		}
+		int crsiTenuti = 0;
+		Docente docentePop = null;
+		Docente[] docenti = DocenteDAO.getFactory().getAll(conn);
+		//Set<Long> s = mappaDocenti.keySet();
+		//System.out.println("mappa");
+		//for(Long l:s)
+			//System.out.println(l);
+		for(Docente d : docenti) {
+			if(mappaDocenti.containsKey(d.getCoddcocente()) && mappaDocenti.get(d.getCoddcocente())>crsiTenuti ) {
+				crsiTenuti = (int)( mappaDocenti.get(d.getCoddcocente()));
+				//System.out.println();
+				docentePop = d;
+			}
+		}
+		return docentePop;
+		
+	}
 	
+	private void aggiungi(Map<Long, Integer> mappaDocenti2, long coddocente) throws DAOException {
+		//Docente d = DocenteDAO.getFactory().getByCod(conn, coddocente);
+		//System.out.println(d.toString());
+		if(mappaDocenti2.containsKey(coddocente)) {
+			int contatore = mappaDocenti2.get(coddocente);
+			mappaDocenti2.put(coddocente, new Integer(contatore+1));
+		}else {
+			mappaDocenti2.put(coddocente, new Integer(1));
+		}
+	}
+	/*input type ... name="<%=codcorso%>" value="<%=codcorso%>";
+	setParameter("2",2);*/
+	
+
 	//corsi con posti disponibili
 	public List<Corso> getCorsiDisponibili () throws DAOException{
 		List<Corso> corsiDisponibili = new LinkedList<Corso>();

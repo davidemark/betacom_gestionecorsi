@@ -9,6 +9,7 @@ public class Corso {
 	private Date dataFine;
 	private Double costo;
 	private String commento;
+	private long coddocente;
 
 	public long getCodcorso() {
 		return codcorso;
@@ -68,10 +69,21 @@ public class Corso {
 
 	private String aula;
 
+	
+
+	public long getCoddocente() {
+		return coddocente;
+	}
+
+	public void setCoddocente(long coddocente) {
+		this.coddocente = coddocente;
+	}
+
 	@Override
 	public String toString() {
 		return "Corso [codcorso=" + codcorso + ", nome=" + nome + ", dataInizio=" + dataInizio + ", dataFine="
-				+ dataFine + ", costo=" + costo + ", commento=" + commento + ", aula=" + aula + "]";
+				+ dataFine + ", costo=" + costo + ", commento=" + commento + ", coddocente=" + coddocente + ", aula="
+				+ aula + "]";
 	}
 
 }

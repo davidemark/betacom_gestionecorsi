@@ -57,11 +57,12 @@ public class CorsoDAO implements GenericDAO<Corso>, DAOConstants {
 				corso = new Corso();
 				corso.setCodcorso(rs.getLong(1));
 				corso.setNome(rs.getString(2));
-				corso.setDataInizio(rs.getDate(3));
-				corso.setDataFine(rs.getDate(4));
+				corso.setDataInizio(new java.util.Date(rs.getDate(3).getTime()));
+				corso.setDataFine(new java.util.Date(rs.getDate(4).getTime()));
 				corso.setCosto(rs.getDouble(5));
 				corso.setCommento(rs.getString(6));
 				corso.setAula(rs.getString(7));
+				corso.setCoddocente(rs.getLong(8));
 			}
 		} catch (SQLException sql) {
 			throw new DAOException(sql);
@@ -84,10 +85,11 @@ public class CorsoDAO implements GenericDAO<Corso>, DAOConstants {
 				co.setCodcorso(rs.getLong(1));
 				co.setNome(rs.getString(2));
 				co.setDataInizio(new java.util.Date(rs.getDate(3).getTime()));
-				co.setDataFine(rs.getDate(4));
+				co.setDataFine(new java.util.Date(rs.getDate(4).getTime()));
 				co.setCosto(rs.getDouble(5));
 				co.setCommento(rs.getString(6));
 				co.setAula(rs.getString(7));
+				co.setCoddocente(rs.getLong(8));
 				corsi[i] = co;
 			}
 		} catch (SQLException sql) {
