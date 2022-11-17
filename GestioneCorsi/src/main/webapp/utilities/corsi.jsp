@@ -1,3 +1,4 @@
+<%@page import="com.torino.gestionecorsi.businesscomponent.model.Corso"%>
 <%@page
 	import="com.torino.gestionecorsi.businesscomponent.facade.AdminFacade"%>
 <%@page
@@ -29,39 +30,42 @@ if (session.getAttribute("nomeadmin") != null) {
 				<thead>
 					<tr>
 						<th>Nome</th>
-						<th>Cognome</th>
-						<th>Precedenti Formativi</th>
+						<th>Data Inizio</th>
+						<th>Data Fine</th>
+						<th>Costo</th>
+						<th>Commenti</th>
+						<th>Aula</th>
+						<th>&nbsp;</th>
 					</tr>
 				</thead>
 				<tbody>
 					<%
-					Corsista[] c = AdminFacade.getInstance().getCorsisti();
+					Corso[] c = AdminFacade.getInstance().getCorsi();
 					for (int i = 0; i < c.length; i++) {
 					%>
 					<tr>
 						<%
 						//Immagine img = ClientFacade.getInstance().findImmagineById(a[i].getIdArticolo());
 						%>
-						<td><form action="/<%=application.getServletContextName()%>/show"
-								method="post">
-								<input type="hidden" name="codcorsista"
-									value="<%=c[i].getCodcorsista()%>">
-								<button type="submit"><%=c[i].getNome()%></button>
-							</form></td>
-						<td><%=c[i].getCognome()%></td>
+						<td><%=c[i].getNome()%></td>
+						<td><%=c[i].getDataInizio()%></td>
+						<td><%=c[i].getDataFine()%></td>
+						<td><%=c[i].getCosto()%></td>
+						<td><%=c[i].getCommento()%></td>
+						<td><%=c[i].getAula()%></td>
 						<td>
-							<%
-							if (c[i].isPrecedentiformativi()) {
-							%>&#10003;<%
-							} else {
-							%>&#10060;<%
-							}
-							%>
+							<form
+								action="/<%=application.getServletContextName()%>/rimuoviCorso?cod=<%=c[i].getCodcorso()%>"
+								method="post">
+								<button class="btn btn-danger btn-xs" type="submit">
+									<span class="glyphicon glyphicon-trash"></span>
+								</button>
+							</form>
 						</td>
-					</tr>
-					<%
-					}
-					%>
+						<%
+						}
+						%>
+					
 				</tbody>
 			</table>
 		</div>
