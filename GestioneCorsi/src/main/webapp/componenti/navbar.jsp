@@ -30,7 +30,7 @@
 						Inserisci Corsista</a></li>
 				<li><a href="/GestioneCorsi/utilities/studenti.jsp"><span
 						class="glyphicon glyphicon-shopping-cart"></span> Lista Corsisti</a></li>
-				<li><a href="#"><span
+				<li><a href="/GestioneCorsi/utilities/riepilogo.jsp"><span
 						class="glyphicon glyphicon-shopping-cart"></span> Visualizza
 						Statistiche</a></li>
 				<li><a href="/GestioneCorsi/utilities/corsi.jsp"><span
