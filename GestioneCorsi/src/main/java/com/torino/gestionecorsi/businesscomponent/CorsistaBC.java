@@ -7,6 +7,7 @@ import com.torino.gestionecorsi.architecture.dao.CorsistaDAO;
 import com.torino.gestionecorsi.architecture.dao.DAOException;
 
 import com.torino.gestionecorsi.architecture.dbaccess.DBAccess;
+import com.torino.gestionecorsi.businesscomponent.codgenerator.CorsistaCodGenerator;
 import com.torino.gestionecorsi.businesscomponent.model.Corsista;
 
 public class CorsistaBC {
@@ -17,7 +18,8 @@ public class CorsistaBC {
 
 	}
 
-	public void create(Corsista corsista) throws DAOException {
+	public void create(Corsista corsista) throws DAOException, ClassNotFoundException, IOException {
+		corsista.setCodcorsista(CorsistaCodGenerator.getInstance().getNextCod());
 		CorsistaDAO.getFactory().create(conn, corsista);
 	}
 
