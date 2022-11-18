@@ -12,7 +12,9 @@ import javax.servlet.http.HttpSession;
 
 import com.torino.gestionecorsi.businesscomponent.facade.AdminFacade;
 import com.torino.gestionecorsi.businesscomponent.model.Corsista;
+import com.torino.gestionecorsi.businesscomponent.model.Corso;
 import com.torino.gestionecorsi.businesscomponent.model.CorsoCorsista;
+import com.torino.gestionecorsi.businesscomponent.utilities.Validator;
 
 @WebServlet("/inserisciCorsista")
 public class InserisciCorsista extends HttpServlet {
@@ -30,18 +32,27 @@ public class InserisciCorsista extends HttpServlet {
 		 
 		 Corsista corsista = new Corsista();
 		 corsista.setNome(nomecorsista);
+		 System.out.println(nomecorsista);
 		 corsista.setCognome(cognomecorsista);
 		 corsista.setPrecedentiformativi(precedentiformativi);
 		 try {
-			 AdminFacade.getInstance().create(corsista);
-			 CorsoCorsista corcor = new CorsoCorsista();
-			 corcor.setCodCorso(codcorso);
-			 corcor.setCodCorsista(corsista.getCodcorsista());
-			 AdminFacade.getInstance().create(corcor);
-			 System.out.println(corsista.getCodcorsista());
-			 session.setAttribute("corsista", corsista);
-			 session.setAttribute("codcorso", new Long(codcorso));
-			 response.sendRedirect("utilities/confermaInserimentoCorsista.jsp");
+			 Corso corso = AdminFacade.getInstance().findCorsoByCod(codcorso);
+			 boolean check1 = Validator.getFactory().validate(corsista);
+			 boolean check2 = Validator.getFactory().validate(corso);
+			 if(check1 && check2) {
+				 
+				 AdminFacade.getInstance().create(corsista);
+				 CorsoCorsista corcor = new CorsoCorsista();
+				 corcor.setCodCorso(codcorso);
+				 corcor.setCodCorsista(corsista.getCodcorsista());
+				 AdminFacade.getInstance().create(corcor);
+				 System.out.println(corsista.getCodcorsista());
+				 session.setAttribute("corsista", corsista);
+				 session.setAttribute("codcorso", new Long(codcorso));
+				 response.sendRedirect("utilities/confermaInserimentoCorsista.jsp");
+			 }else {
+				 response.sendRedirect("provaerrore.jsp");
+			 }
 		 }catch (Exception e) {
 				e.printStackTrace();
 				throw new ServletException(e.getMessage());

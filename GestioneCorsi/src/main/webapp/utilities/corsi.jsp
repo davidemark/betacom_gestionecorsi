@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.torino.gestionecorsi.businesscomponent.model.Corso"%>
 <%@page
@@ -14,7 +15,7 @@ if (session.getAttribute("nomeadmin") != null) {
 <head>
 <%@ include file="../CDN/CDN.html"%>
 <meta charset="ISO-8859-1">
-<title>Lista Studenti</title>
+<title>Lista Corsi</title>
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -42,7 +43,11 @@ if (session.getAttribute("nomeadmin") != null) {
 				<tbody>
 					<%
 					Corso[] c = AdminFacade.getInstance().getCorsi();
+					Date oggi = new Date();
 					for (int i = 0; i < c.length; i++) {
+						if(oggi.getTime()>c[i].getDataFine().getTime()){
+							
+						
 					%>
 					<tr>
 						<%
@@ -64,6 +69,7 @@ if (session.getAttribute("nomeadmin") != null) {
 							</form>
 						</td>
 						<%
+						}
 						}
 						%>
 					
