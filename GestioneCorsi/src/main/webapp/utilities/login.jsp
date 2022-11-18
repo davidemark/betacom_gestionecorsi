@@ -22,9 +22,9 @@ if (session.getAttribute("conto") == null) {
 </head>
 <body>
 	<jsp:include page="../componenti/navbar.jsp" />
-	<div class="container bg-warning center-login">
+	<div class="container center-login">
 		<header class="page-header">
-			<h3>Inserire i dati per accedere</h3>
+			<h3 class="text-center">Inserire i dati per accedere</h3>
 		</header>
 
 		<!-- TODO: da sistemare il form action="/<%=application.getServletContextName()%>/controllo"
@@ -32,8 +32,8 @@ if (session.getAttribute("conto") == null) {
 		<!-- nomeadmin -->
 		<form action="/<%=application.getServletContextName()%>/controllo"
 			method="post" class="form-horizontal">
-			<div class="form-group">
-				<label class="col-md-1 control-label">Nome Admin</label>
+			<div class="form-group d-flex-center">
+				<label class="col-md-2 control-label">Nome Admin</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
 						<span class="input-group-addon"><i
@@ -45,8 +45,8 @@ if (session.getAttribute("conto") == null) {
 			</div>
 
 			<!-- cognomeadmin -->
-			<div class="form-group">
-				<label class="col-md-1 control-label">Cognome Admin</label>
+			<div class="form-group d-flex-center">
+				<label class="col-md-2 control-label">Cognome Admin</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
 						<span class="input-group-addon"><i
@@ -58,8 +58,8 @@ if (session.getAttribute("conto") == null) {
 			</div>
 
 			<!-- codadmin -->
-			<div class="form-group">
-				<label class="col-md-1 control-label">Codice Admin</label>
+			<div class="form-group d-flex-center">
+				<label class="col-md-2 control-label">Codice Admin</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
 						<span class="input-group-addon"><i
@@ -70,8 +70,8 @@ if (session.getAttribute("conto") == null) {
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="col-md-4 col-md-offset-1">
+			<div class="row d-flex-center">
+				<div class="col-md-4 text-center">
 					<button type="submit" class="btn btn-primary">
 						Login&nbsp;&nbsp;<span class="glyphicon glyphicon-log-in"></span>
 					</button>
@@ -79,8 +79,15 @@ if (session.getAttribute("conto") == null) {
 			</div>
 
 		</form>
+		<%
+		if(!session.getAttribute("conto").equals(5)){
+		%>
+		<div class="row d-flex-center "><div class="alert alert-danger col-md-3 custom-alert" role="alert">Dati inseriti errati! Tentativi rimasti:<%=session.getAttribute("conto")%></div></div>
+	<%
+		}
+	%>
 	</div>
-	<h1><%=session.getAttribute("conto")%></h1>
+	
 	<footer><%@ include file="../componenti/footer.html"%></footer>
 </body>
 </html>

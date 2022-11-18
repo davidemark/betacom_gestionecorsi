@@ -21,6 +21,8 @@ nav.navbar {
 	font-size: 12px;
 	padding: 30px;
 	width: 100%;
+	position:absolute;
+	bottom: 0px;
 }
 
 .custom-a {
@@ -42,4 +44,8 @@ nav.navbar {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.custom-alert{
+	margin: 10px;
 }
