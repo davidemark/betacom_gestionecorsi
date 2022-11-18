@@ -1,3 +1,6 @@
+<%@page import="com.torino.gestionecorsi.businesscomponent.model.Docente"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="com.torino.gestionecorsi.businesscomponent.model.Corso"%>
 <%@page
 	import="com.torino.gestionecorsi.businesscomponent.facade.AdminFacade"%>
 <%@page
@@ -23,14 +26,18 @@ if (session.getAttribute("nomeadmin") != null) {
 		<header class="page-header">
 			<h3>Corsista inserito con successo</h3>
 		</header>
-
+		
+		<%
+			Corsista corsista  = (Corsista) session.getAttribute("corsista");
+		%>
+		
 		<form class="form-horizontal">
 
 
 			<div class="form-group">
 				<label for="nomecorsista" class="col-sm-4 control-label">Nome Corsista</label>
 				<div class="col-sm-3">
-					<p class="form-control"></p>
+					<p class="form-control"><%=corsista.getNome() %></p>
 				</div>
 			</div>
 
@@ -38,30 +45,35 @@ if (session.getAttribute("nomeadmin") != null) {
 			<div class="form-group">
 				<label for="nomecorsista" class="col-sm-4 control-label">Cognome Corsista</label>
 				<div class="col-sm-3">
-					<p class="form-control"></p>
+					<p class="form-control"><%=corsista.getCognome() %></p>
 				</div>
 			</div>
-
-
+			
+			<%
+				long codcorso = (Long)session.getAttribute("codcorso");
+				Corso corso = AdminFacade.getInstance().findCorsoByCod(codcorso);
+			%>
 			<div class="form-group">
 				<label for="nomecorsista" class="col-sm-4 control-label">Nome Corso</label>
 				<div class="col-sm-3">
-					<p class="form-control"></p>
+					<p class="form-control"><%=corso.getNome() %></p>
 				</div>
 			</div>
-
+			<%
+				SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+			%>
 
 			<div class="form-group">
 				<label for="nomecorsista" class="col-sm-4 control-label">Data Inizio</label>
 				<div class="col-sm-3">
-					<p class="form-control"></p>
+					<p class="form-control"><%=format.format(corso.getDataInizio()) %></p>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label for="nomecorsista" class="col-sm-4 control-label">Data Fine</label>
 				<div class="col-sm-3">
-					<p class="form-control"></p>
+					<p class="form-control"><%=format.format(corso.getDataFine()) %></p>
 				</div>
 			</div>
 
@@ -69,7 +81,7 @@ if (session.getAttribute("nomeadmin") != null) {
 			<div class="form-group">
 				<label for="nomecorsista" class="col-sm-4 control-label">Commenti</label>
 				<div class="col-sm-3">
-					<p class="form-control"></p>
+					<p class="form-control"><%=corso.getCommento()!=null?corso.getCommento():"nessun commento" %></p>
 				</div>
 			</div>
 
@@ -77,7 +89,7 @@ if (session.getAttribute("nomeadmin") != null) {
 			<div class="form-group">
 				<label for="nomecorsista" class="col-sm-4 control-label">Precedenti formativi</label>
 				<div class="col-sm-3">
-					<p class="form-control"></p>
+					<p class="form-control"><%=corsista.isPrecedentiformativi()?"Ha precedenti":"nNon ha precedenti" %></p>
 				</div>
 			</div>
 			
@@ -85,14 +97,16 @@ if (session.getAttribute("nomeadmin") != null) {
 			<div class="form-group">
 				<label for="nomecorsista" class="col-sm-4 control-label">Aula corso</label>
 				<div class="col-sm-3">
-					<p class="form-control"></p>
+					<p class="form-control"><%=corso.getAula() %></p>
 				</div>
 			</div>
-	
+			<%
+				Docente docente = AdminFacade.getInstance().findDocenteByCod(corso.getCoddocente());
+			%>
 			<div class="form-group">
 				<label for="nomecorsista" class="col-sm-4 control-label">Docente</label>
 				<div class="col-sm-3">
-					<p class="form-control"></p>
+					<p class="form-control"><%=docente.getNome() %></p>
 				</div>
 			</div>
 		</form>
@@ -102,7 +116,7 @@ if (session.getAttribute("nomeadmin") != null) {
 </body>
 </html>
 <%
-} else {
+} else{
 response.sendRedirect("login.jsp");
 }
 %>
