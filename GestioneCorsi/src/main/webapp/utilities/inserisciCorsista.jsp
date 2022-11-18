@@ -25,7 +25,7 @@ if (session.getAttribute("nomeadmin") != null) {
 		</header>
 
 		<form
-			action="/<%=application.getServletContextName()%>/confermaCorsista"
+			action="/<%=application.getServletContextName()%>/inserisciCorsista"
 			method="post" class="form-horizontal">
 
 			<!-- nome -->
@@ -42,7 +42,7 @@ if (session.getAttribute("nomeadmin") != null) {
 				<label for="cognomecorsista" class="col-sm-2 control-label">Cognome
 					corsista</label>
 				<div class="col-sm-6">
-					<input type="password" class="form-control" id="cognomecorsista"
+					<input type="text" class="form-control" id="cognomecorsista"
 						placeholder="Cognome" name="cognomecorsista">
 				</div>
 			</div>
@@ -66,14 +66,15 @@ if (session.getAttribute("nomeadmin") != null) {
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-6">
 					<div class="radio">
-						<label> <input type="radio" name="precedentiformativi"
-							id="precedentiformativi1" value="false" checked> Il
-							corsista NON ha precedenti formativi
+						<label> <input type="radio"
+							name="precedentiformativifalse" id="precedentiformativifalse"
+							value="false" checked> Il corsista NON ha precedenti
+							formativi
 						</label>
 					</div>
 					<div class="radio">
-						<label> <input type="radio" name="precedentiformativi"
-							id="precedentiformativi2" value="true"> Il corsista ha
+						<label> <input type="radio" name="precedentiformativitrue"
+							id="precedentiformativitrue" value="true"> Il corsista ha
 							precedenti formativi
 						</label>
 					</div>
@@ -82,14 +83,13 @@ if (session.getAttribute("nomeadmin") != null) {
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-6">
-					<button type="submit" class="btn btn-primary" data-toggle="modal"
-						data-target="#confermaModal">
+					<button type="submit" class="btn btn-primary">
 						Inserisci corsista&nbsp;&nbsp;<span
 							class="glyphicon glyphicon-send"></span>
 					</button>
 				</div>
 			</div>
-			
+
 		</form>
 	</div>
 
@@ -101,6 +101,3 @@ if (session.getAttribute("nomeadmin") != null) {
 response.sendRedirect("login.jsp");
 }
 %>
-<jsp:include page="confermaInserisciCorsistaModal.jsp">
-	<jsp:param value="" name="id" />
-</jsp:include>
