@@ -38,7 +38,7 @@ if (session.getAttribute("nomeadmin") != null) {
 			<div class="form-group">
 				<label for="nomecorsista" class="col-sm-4 control-label">Cognome Corsista</label>
 				<div class="col-sm-3">
-					<p class="form-control">></p>
+					<p class="form-control"></p>
 				</div>
 			</div>
 

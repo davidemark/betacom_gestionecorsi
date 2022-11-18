@@ -12,7 +12,7 @@ if (session.getAttribute("nomeadmin") != null) {
 <head>
 <%@ include file="../CDN/CDN.html"%>
 <meta charset="ISO-8859-1">
-<title>Lista Studenti</title>
+<title>Lista corsisti</title>
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -21,15 +21,14 @@ if (session.getAttribute("nomeadmin") != null) {
 	<div class="container">
 
 		<header class="page-header">
-			<h3>Corsisti</h3>
+			<h3 class="text-center">Lista dei corsisti</h3>
 		</header>
 
 		<div class="table-responsive">
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th class="text-center">Nome</th>
-						<th class="text-center">Cognome</th>
+						<th class="text-center">Corsista</th>
 						<th class="text-center">Precedenti Formativi</th>
 					</tr>
 				</thead>
@@ -47,9 +46,8 @@ if (session.getAttribute("nomeadmin") != null) {
 								method="post">
 								<input type="hidden" name="codcorsista"
 									value="<%=c[i].getCodcorsista()%>">
-								<button type="submit"><%=c[i].getNome()%></button>
+								<button type="submit"><%=c[i].getNome()%> <%=c[i].getCognome()%></button>
 							</form></td>
-						<td class="text-center"><%=c[i].getCognome()%></td>
 						<td class="text-center">
 							<%
 							if (c[i].isPrecedentiformativi()) {

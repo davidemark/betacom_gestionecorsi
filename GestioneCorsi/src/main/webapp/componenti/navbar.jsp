@@ -26,12 +26,12 @@
 			%>
 
 			<ul class="nav navbar-nav">
-				<li><a href="/GestioneCorsi/utilities/inserisciCorsista.jsp"><span class="glyphicon glyphicon-user"></span>
+				<li><a href="/GestioneCorsi/utilities/inserisciCorsista.jsp"><span class="glyphicon glyphicon-plus"></span>
 						Inserisci Corsista</a></li>
 				<li><a href="/GestioneCorsi/utilities/studenti.jsp"><span
-						class="glyphicon glyphicon-shopping-cart"></span> Lista Corsisti</a></li>
+						class="glyphicon glyphicon-list-alt"></span> Lista Corsisti</a></li>
 				<li><a href="/GestioneCorsi/utilities/riepilogo.jsp"><span
-						class="glyphicon glyphicon-shopping-cart"></span> Visualizza
+						class="glyphicon glyphicon-search"></span> Visualizza
 						Statistiche</a></li>
 				<li><a href="/GestioneCorsi/utilities/corsi.jsp"><span
 						class="glyphicon glyphicon-trash"></span> Elimina Corsi</a></li>

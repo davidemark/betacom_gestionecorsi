@@ -1,6 +1,7 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.GregorianCalendar"%>
-<%@page import="com.torino.gestionecorsi.businesscomponent.model.Docente"%>
+<%@page
+	import="com.torino.gestionecorsi.businesscomponent.model.Docente"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.util.List"%>
 <%@page import="com.torino.gestionecorsi.businesscomponent.model.Corso"%>
@@ -29,7 +30,7 @@ if (session.getAttribute("nomeadmin") != null) {
 	<div class="container">
 
 		<header class="page-header">
-			<h3>Riepilogo dati</h3>
+			<h3 class="text-center">Riepilogo dati</h3>
 		</header>
 
 		<form class="form-horizontal">
@@ -52,7 +53,7 @@ if (session.getAttribute("nomeadmin") != null) {
 				<label for="nomecorsista" class="col-sm-4 control-label">Corso
 					pi&ugrave; frequentato</label>
 				<div class="col-sm-3">
-					<p class="form-control"><%=cpop.getNome() %></p>
+					<p class="form-control"><%=cpop.getNome()%></p>
 				</div>
 			</div>
 
@@ -63,7 +64,7 @@ if (session.getAttribute("nomeadmin") != null) {
 			<div class="form-group">
 				<label for="nomecorsista" class="col-sm-4 control-label">Inizio</label>
 				<div class="col-sm-3">
-					<p class="form-control"><%= formato.format(inizio) %></p>
+					<p class="form-control"><%=formato.format(inizio)%></p>
 				</div>
 			</div>
 
@@ -74,7 +75,7 @@ if (session.getAttribute("nomeadmin") != null) {
 				<label for="nomecorsista" class="col-sm-4 control-label">Durata
 					media</label>
 				<div class="col-sm-3">
-					<p class="form-control"><%=duratamedia %></p>
+					<p class="form-control"><%=duratamedia%></p>
 				</div>
 			</div>
 
@@ -85,7 +86,7 @@ if (session.getAttribute("nomeadmin") != null) {
 				<label for="nomecorsista" class="col-sm-4 control-label">Numero
 					commenti</label>
 				<div class="col-sm-3">
-					<p class="form-control"><%=ncommenti %></p>
+					<p class="form-control"><%=ncommenti%></p>
 				</div>
 			</div>
 
@@ -96,7 +97,8 @@ if (session.getAttribute("nomeadmin") != null) {
 				<label for="nomecorsista" class="col-sm-4 control-label">Docente
 					con pi&ugrave; corsi</label>
 				<div class="col-sm-3">
-					<p class="form-control"><%=docentepop.getNome() %> <%=docentepop.getCognome() %></p>
+					<p class="form-control"><%=docentepop.getNome()%>
+						<%=docentepop.getCognome()%></p>
 				</div>
 			</div>
 		</form>

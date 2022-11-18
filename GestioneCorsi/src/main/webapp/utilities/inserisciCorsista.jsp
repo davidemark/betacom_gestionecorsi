@@ -1,4 +1,7 @@
 
+<%@page import="java.util.List"%>
+<%@page
+	import="com.torino.gestionecorsi.businesscomponent.utilities.Report"%>
 <%@page import="com.torino.gestionecorsi.businesscomponent.model.Corso"%>
 <%@page
 	import="com.torino.gestionecorsi.businesscomponent.facade.AdminFacade"%>
@@ -52,10 +55,10 @@ if (session.getAttribute("nomeadmin") != null) {
 				<div class="col-sm-6">
 					<select class="form-control" name="codcorso">
 						<%
-						Corso[] c = AdminFacade.getInstance().getCorsi();
-						for (int i = 0; i < c.length; i++) {
+						List<Corso> corsi = Report.getFactory().getCorsiDisponibili();
+						for (Corso corso : corsi) {
 						%>
-						<option value="<%=c[i].getCodcorso()%>"><%=c[i].getNome()%></option>
+						<option value="<%=corso.getCodcorso()%>"><%=corso.getNome()%></option>
 						<%
 						}
 						%>
@@ -66,15 +69,14 @@ if (session.getAttribute("nomeadmin") != null) {
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-6">
 					<div class="radio">
-						<label> <input type="radio"
-							name="precedentiformativifalse" id="precedentiformativifalse"
-							value="false" checked> Il corsista NON ha precedenti
-							formativi
+						<label> <input type="radio" name="precedentiformativi"
+							id="precedentiformativi" value="false" checked> Il
+							corsista NON ha precedenti formativi
 						</label>
 					</div>
 					<div class="radio">
-						<label> <input type="radio" name="precedentiformativitrue"
-							id="precedentiformativitrue" value="true"> Il corsista ha
+						<label> <input type="radio" name="precedentiformativi"
+							id="precedentiformativi" value="true"> Il corsista ha
 							precedenti formativi
 						</label>
 					</div>
