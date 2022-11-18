@@ -24,10 +24,14 @@ import com.torino.gestionecorsi.businesscomponent.model.Corso;
 import com.torino.gestionecorsi.businesscomponent.model.Docente;
 
 public class Report implements DAOConstants{
+	public static Report getFactory() throws ClassNotFoundException, DAOException, IOException {
+		return new Report();
+	}
+
 	Connection conn;
 	Map<Long, Integer> mappaDocenti;
 	
-	public Report() throws ClassNotFoundException, DAOException, IOException {
+	private Report() throws ClassNotFoundException, DAOException, IOException {
 		conn = DBAccess.getConnection();
 	}
 	
@@ -69,7 +73,7 @@ public class Report implements DAOConstants{
 		try {
 			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-			ResultSet rs = stmt.executeQuery(/*SELECT_ULTIMA_DATA*/"select max(datainiziocorso) from corso");
+			ResultSet rs = stmt.executeQuery(SELECT_ULTIMA_DATA);
 			
 			
 			rs.beforeFirst();
@@ -93,7 +97,7 @@ public class Report implements DAOConstants{
 		try {
 			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-			ResultSet rs = stmt.executeQuery(/*SELECT_DURATA_MEDIA*/"select avg(datafinecorso-datainiziocorso) from corso");
+			ResultSet rs = stmt.executeQuery(SELECT_DURATA_MEDIA);
 			
 			
 			rs.beforeFirst();
@@ -114,7 +118,7 @@ public class Report implements DAOConstants{
 		try {
 			Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-			ResultSet rs = stmt.executeQuery(/*SELECT_COMMENTI*/"select count(commenticorso) from corso");
+			ResultSet rs = stmt.executeQuery(SELECT_COMMENTI);
 			
 			
 			rs.beforeFirst();
@@ -182,14 +186,19 @@ public class Report implements DAOConstants{
 		List<Corso> corsiDisponibili = new LinkedList<Corso>();
 		Corso[] corsi = CorsoDAO.getFactory().getAll(conn);
 		for(Corso c:corsi) {
-			Corsista[] cor=CorsoCorsistaDAO.getFactory().getAllByCorso(conn, c);
-			if(cor.length <12) {
+			/*Corsista[] cor=CorsoCorsistaDAO.getFactory().getAllByCorso(conn, c);*/
+			if(/*cor.length <12*/disponibile(c)) {
 				corsiDisponibili.add(c);
 			}
 		}
 		return corsiDisponibili;
 	}
 	
+	public boolean disponibile(Corso c) throws DAOException {
+		Corsista[] cor = CorsoCorsistaDAO.getFactory().getAllByCorso(conn, c);
+		return cor.length<12;
+	}
+
 	public void closeConnection() throws DAOException {
 		DBAccess.closeConnection();
 	}

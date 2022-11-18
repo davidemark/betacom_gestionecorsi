@@ -20,7 +20,7 @@ class ReportTest {
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		report = new Report();
+		report = Report.getFactory();
 	}
 
 	@AfterAll
