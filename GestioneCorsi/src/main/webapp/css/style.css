@@ -5,7 +5,6 @@ html {
 
 body {
 	background-color: #f4f4f4;
-
 }
 
 nav.navbar {
@@ -21,7 +20,7 @@ nav.navbar {
 	font-size: 12px;
 	padding: 30px;
 	width: 100%;
-	position:absolute;
+	position: absolute;
 	bottom: 0px;
 }
 
@@ -36,16 +35,31 @@ nav.navbar {
 
 @media screen and (max-width: 520px) {
 	.custom-footer {
-	 flex-direction: column;
+		flex-direction: column;
 	}
 }
 
-.d-flex-center{
+.d-flex-center {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.custom-alert{
+.d-flex-end {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.custom-alert {
 	margin: 10px;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%
+}
+
+.custom-panel{
+	height:400px;
 }

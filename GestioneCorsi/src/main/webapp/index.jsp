@@ -17,8 +17,98 @@ if (session.getAttribute("nomeadmin") != null) {
 	<div class="container">
 
 		<header class="page-header">
-			<h3 class="text-center">Benvenuto! <%=session.getAttribute("nomeadmin") %></h3>
+			<h3 class="text-center">
+				<b>Benvenuto!
+				<%=session.getAttribute("nomeadmin")%></b></h3>
 		</header>
+		<div class="row">
+		
+			<div class="col-md-3">
+				<div class="panel panel-primary">
+					<div class="panel-heading text-center">
+						<strong>Inserisci Corsista</strong>
+					</div>
+					<div class="panel-body">
+						<div>
+							<img src="img/inserisci_corsista.jpg" alt="inseriscicorsista">
+							<p>Inserisci un nuovo corsista ad un corso tenuto dai nostri docenti!</p>
+						</div>
+					</div>
+					<div class="panel-footer">
+						<div class="d-flex-end">
+							<a href="utilities/inserisciCorsista.jsp" class="btn btn-primary">
+								Inserisci Corsista&nbsp;<span class="glyphicon glyphicon-plus"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-md-3">
+				<div class="panel panel-primary">
+					<div class="panel-heading text-center">
+						<strong>Lista Corsisti</strong>
+					</div>
+					<div class="panel-body">
+						<div>
+							<img src="img/lista_corsisti.jpg" alt="listacorsisti">
+							<p>Visualizza la lista completa dei corsisti che frequentano i nostri corsi!</p>
+						</div>
+					</div>
+					<div class="panel-footer">
+						<div class="d-flex-end">
+							<a href="utilities/studenti.jsp" class="btn btn-primary">
+								Lista Corsisti&nbsp;<span class="glyphicon glyphicon-list-alt"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-md-3">
+				<div class="panel panel-primary">
+					<div class="panel-heading text-center">
+						<strong>Visualizza Statistiche</strong>
+					</div>
+					<div class="panel-body">
+						<div>
+							<img src="img/visualizza_statistiche.jpg" alt="visualizzastatistiche">
+							<p>Visualizza tutte le statistiche relative</p>
+						</div>
+					</div>
+					<div class="panel-footer">
+						<div class="d-flex-end">
+							<a href="utilities/riepilogo.jsp" class="btn btn-primary">
+								Visualizza statistiche&nbsp;<span class="glyphicon glyphicon-search"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-md-3">
+				<div class="panel panel-primary">
+					<div class="panel-heading text-center">
+						<strong>Elimina Corsi</strong>
+					</div>
+					<div class="panel-body">
+						<div>
+							<img src="img/delete.png" alt="delete">
+							<p>Elimina i corsi scaduti!</p>
+						</div>
+					</div>
+					<div class="panel-footer">
+						<div class="d-flex-end">
+							<a href="utilities/corsi.jsp" class="btn btn-primary">
+								Elimina Corsi&nbsp;<span class="glyphicon glyphicon-trash"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
 
 	</div>
 	<footer><%@ include file="../componenti/footer.html"%></footer>
