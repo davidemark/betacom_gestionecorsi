@@ -31,7 +31,7 @@ if (session.getAttribute("conto") == null) {
 			method="post" -->
 		<!-- nomeadmin -->
 		<form action="/<%=application.getServletContextName()%>/controllo"
-			method="post" class="form-horizontal">
+			method="post" class="form-horizontal" id="loginForm">
 			<div class="form-group d-flex-center">
 				<label class="col-md-2 control-label">Nome Admin</label>
 				<div class="col-md-4 inputGroupContainer">
