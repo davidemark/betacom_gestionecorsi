@@ -62,7 +62,17 @@
 				</tbody>
 			</table>
 		</div>
+		<div class="d-flex-center">
+		<button type="button" class="btn btn-primary text-center"
+								data-toggle="modal"
+								data-target="#iscriviCorsista_<%=corsista.getCodcorsista() %>">
+								Iscrivi Corsista&nbsp;&nbsp;<span class="glyphicon glyphicon-plus"></span>
+							</button>
+							</div>
 	</div>
 	<footer><%@ include file="../componenti/footer.html"%></footer>
+	<jsp:include page="iscriviCorsistaModal.jsp">
+								<jsp:param value="<%=corsista.getCodcorsista() %>" name="cod" />
+							</jsp:include>
 </body>
 </html>
