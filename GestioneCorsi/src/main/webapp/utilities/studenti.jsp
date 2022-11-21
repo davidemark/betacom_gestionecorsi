@@ -3,25 +3,21 @@
 <%@page
 	import="com.torino.gestionecorsi.businesscomponent.model.Corsista"%>
 <%
-if (session.getAttribute("nomeadmin") != null) {
+//if (session.getAttribute("nomeadmin") != null) {
+Cookie[] ck = request.getCookies();
+Boolean flag = false;
+for (int j = 0; j < ck.length && !flag; j++) {
+	flag = ck[j].getName().equals("nomeadmin") || ck[j].getName().equals("cognomeadmin");
+}
+for (int i = 0; i < ck.length && flag; i++) {
+	if (ck[i].getName().equals("nomeadmin") || ck[i].getName().equals("cognomeadmin")) {
+		flag = ck[i].getValue() != null && !ck[i].getValue().equals("");
+	}
+}
+if (flag) {
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
-<%
-Cookie nomeadmin = new Cookie("nomeadmin", (String) session.getAttribute("nomeadmin"));
-Cookie cognomeadmin = new Cookie("cognomeadmin", (String) session.getAttribute("cognomeadmin"));
-Cookie codadmin = new Cookie("codadmin", (String) session.getAttribute("codadmin"));
-
-//nomeadmin.setMaxAge(60*60*10); 
-//cognomeadmin.setMaxAge(60*60*10);
-//codadmin.setMaxAge(60*60*10);
-
-// Add both the cookies in the response header.
-response.addCookie(nomeadmin);
-response.addCookie(cognomeadmin);
-response.addCookie(codadmin);
-%>
 
 <!DOCTYPE html>
 <html>

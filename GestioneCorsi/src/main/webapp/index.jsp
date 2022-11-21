@@ -1,6 +1,17 @@
 
 <%
-if (session.getAttribute("nomeadmin") != null) {
+//if (session.getAttribute("nomeadmin") != null) {
+Cookie[] ck = request.getCookies();
+Boolean flag = false;
+for (int j = 0; j < ck.length && !flag; j++) {
+	flag = ck[j].getName().equals("nomeadmin") || ck[j].getName().equals("cognomeadmin");
+}
+for (int i = 0; i < ck.length && flag; i++) {
+	if (ck[i].getName().equals("nomeadmin") || ck[i].getName().equals("cognomeadmin")) {
+		flag = ck[i].getValue() != null && !ck[i].getValue().equals("");
+	}
+}
+if (flag) {
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -18,11 +29,11 @@ if (session.getAttribute("nomeadmin") != null) {
 
 		<header class="page-header">
 			<h3 class="text-center">
-				<b>Benvenuto!
-				<%=session.getAttribute("nomeadmin")%></b></h3>
+				<b>Benvenuto! <%=session.getAttribute("nomeadmin")%></b>
+			</h3>
 		</header>
 		<div class="row">
-		
+
 			<div class="col-md-3">
 				<div class="panel panel-primary">
 					<div class="panel-heading text-center">
@@ -31,7 +42,8 @@ if (session.getAttribute("nomeadmin") != null) {
 					<div class="panel-body">
 						<div>
 							<img src="img/inserisci_corsista.jpg" alt="inseriscicorsista">
-							<p>Inserisci un nuovo corsista ad un corso tenuto dai nostri docenti!</p>
+							<p>Inserisci un nuovo corsista ad un corso tenuto dai nostri
+								docenti!</p>
 						</div>
 					</div>
 					<div class="panel-footer">
@@ -43,7 +55,7 @@ if (session.getAttribute("nomeadmin") != null) {
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="col-md-3">
 				<div class="panel panel-primary">
 					<div class="panel-heading text-center">
@@ -52,7 +64,8 @@ if (session.getAttribute("nomeadmin") != null) {
 					<div class="panel-body">
 						<div>
 							<img src="img/lista_corsisti.jpg" alt="listacorsisti">
-							<p>Visualizza la lista completa dei corsisti che frequentano i nostri corsi!</p>
+							<p>Visualizza la lista completa dei corsisti che frequentano
+								i nostri corsi!</p>
 						</div>
 					</div>
 					<div class="panel-footer">
@@ -64,7 +77,7 @@ if (session.getAttribute("nomeadmin") != null) {
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="col-md-3">
 				<div class="panel panel-primary">
 					<div class="panel-heading text-center">
@@ -72,20 +85,22 @@ if (session.getAttribute("nomeadmin") != null) {
 					</div>
 					<div class="panel-body">
 						<div>
-							<img src="img/visualizza_statistiche.jpg" alt="visualizzastatistiche">
+							<img src="img/visualizza_statistiche.jpg"
+								alt="visualizzastatistiche">
 							<p>Visualizza tutte le statistiche relative</p>
 						</div>
 					</div>
 					<div class="panel-footer">
 						<div class="d-flex-end">
 							<a href="utilities/riepilogo.jsp" class="btn btn-primary">
-								Visualizza statistiche&nbsp;<span class="glyphicon glyphicon-search"></span>
+								Visualizza statistiche&nbsp;<span
+								class="glyphicon glyphicon-search"></span>
 							</a>
 						</div>
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="col-md-3">
 				<div class="panel panel-primary">
 					<div class="panel-heading text-center">

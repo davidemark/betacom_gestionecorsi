@@ -1,6 +1,19 @@
 <!-- controllo di accesso alla pagina login  -->
 <%
-if (session.getAttribute("nomeadmin") != null && session.getAttribute("cognomeadmin") != null) {
+//if (session.getAttribute("nomeadmin") != null && session.getAttribute("cognomeadmin") != null) {
+//response.sendRedirect("index.jsp");
+//} else {
+Cookie[] ck = request.getCookies();
+Boolean flag = false;
+for (int j = 0; j < ck.length && !flag; j++) {
+	flag = ck[j].getName().equals("nomeadmin") || ck[j].getName().equals("cognomeadmin");
+}
+for (int i = 0; i < ck.length && flag; i++) {
+	if (ck[i].getName().equals("nomeadmin") || ck[i].getName().equals("cognomeadmin")) {
+		flag = ck[i].getValue() != null && !ck[i].getValue().equals("");
+	}
+}
+if (flag) {
 	response.sendRedirect("index.jsp");
 } else {
 %>
@@ -80,14 +93,17 @@ if (session.getAttribute("conto") == null) {
 
 		</form>
 		<%
-		if(!session.getAttribute("conto").equals(5)){
+		if (!session.getAttribute("conto").equals(5)) {
 		%>
-		<div class="row d-flex-center "><div class="alert alert-danger col-md-3 custom-alert" role="alert">Dati inseriti errati! Tentativi rimasti:<%=session.getAttribute("conto")%></div></div>
-	<%
+		<div class="row d-flex-center ">
+			<div class="alert alert-danger col-md-3 custom-alert" role="alert">
+				Dati inseriti errati! Tentativi rimasti:<%=session.getAttribute("conto")%></div>
+		</div>
+		<%
 		}
-	%>
+		%>
 	</div>
-	
+
 	<footer><%@ include file="../componenti/footer.html"%></footer>
 </body>
 </html>

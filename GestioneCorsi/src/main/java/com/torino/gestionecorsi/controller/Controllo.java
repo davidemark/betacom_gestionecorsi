@@ -3,6 +3,7 @@ package com.torino.gestionecorsi.controller;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,10 +27,16 @@ public class Controllo extends HttpServlet {
 		if (nomeadmin != null && cognomeadmin != null && codadmin != null) {
 			try {
 				Login l = new Login();
+				Cookie cnomeadmin = new Cookie("nomeadmin", nomeadmin );
+				Cookie ccognomeadmin = new Cookie("cognomeadmin", cognomeadmin );
 				adminpass = l.getCodAdmin(nomeadmin, cognomeadmin);
 				if (adminpass != null && adminpass.equals(codadmin)) {
-					session.setAttribute("nomeadmin", nomeadmin);
-					session.setAttribute("cognomeadmin", cognomeadmin);
+					cnomeadmin.setMaxAge(60*60*24*365);
+					ccognomeadmin.setMaxAge(60*60*24*365);
+					response.addCookie(cnomeadmin);
+					response.addCookie(ccognomeadmin);
+//					session.setAttribute("nomeadmin", nomeadmin);
+//					session.setAttribute("cognomeadmin", cognomeadmin);
 					response.sendRedirect("utilities/studenti.jsp");
 				} else if (--conto > 0) {
 

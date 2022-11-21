@@ -6,7 +6,18 @@
 <%@page
 	import="com.torino.gestionecorsi.businesscomponent.facade.AdminFacade"%>
 <%
-if (session.getAttribute("nomeadmin") != null) {
+//if (session.getAttribute("nomeadmin") != null) {
+Cookie[] ck = request.getCookies();
+Boolean flag = false;
+for (int j = 0; j < ck.length && !flag; j++) {
+	flag = ck[j].getName().equals("nomeadmin") || ck[j].getName().equals("cognomeadmin");
+}
+for (int i = 0; i < ck.length && flag; i++) {
+	if (ck[i].getName().equals("nomeadmin") || ck[i].getName().equals("cognomeadmin")) {
+		flag = ck[i].getValue() != null && !ck[i].getValue().equals("");
+	}
+}
+if (flag) {
 %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
