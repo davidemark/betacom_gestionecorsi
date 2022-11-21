@@ -27,6 +27,7 @@ if (request.getParameter("cod") == null) {
 					</h4>
 				</div>
 				<div class="modal-body">
+					<input type="hidden" name="codcorsista" value="<%=cod%>" />
 					<select class="form-control" name="codcorso">
 						<%
 						List<Corso> corsi = Report.getFactory().getCorsiDisponibili();

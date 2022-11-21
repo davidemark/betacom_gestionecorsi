@@ -11,6 +11,7 @@ for (int i = 0; i < ck.length && flag; i++) {
 		flag = ck[i].getValue() != null && !ck[i].getValue().equals("");
 	}
 }
+
 if (flag) {
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -29,7 +30,7 @@ if (flag) {
 
 		<header class="page-header">
 			<h3 class="text-center">
-				<b>Benvenuto! <%=session.getAttribute("nomeadmin")%></b>
+				<b>Benvenuto! <%=ck[1].getValue()%></b>
 			</h3>
 		</header>
 		<div class="row">

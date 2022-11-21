@@ -14,7 +14,7 @@ for (int i = 0; i < ck.length && flag; i++) {
 	}
 }
 if (flag) {
-	response.sendRedirect("index.jsp");
+	response.sendRedirect("/GestioneCorsi/index.jsp");
 } else {
 %>
 <%
