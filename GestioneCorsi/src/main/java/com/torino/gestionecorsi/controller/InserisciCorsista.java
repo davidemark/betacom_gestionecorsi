@@ -51,7 +51,11 @@ public class InserisciCorsista extends HttpServlet {
 				 session.setAttribute("codcorso", new Long(codcorso));
 				 response.sendRedirect("utilities/confermaInserimentoCorsista.jsp");
 			 }else {
-				 response.sendRedirect("provaerrore.jsp");
+				 Boolean checkCorsista = check1;
+				 Boolean checkCorso = check2;
+				 session.setAttribute("checkCorsista",checkCorsista);
+				 session.setAttribute("checkCorso", checkCorso);
+				 response.sendRedirect("utilities/errorevalidazione.jsp");
 			 }
 		 }catch (Exception e) {
 				e.printStackTrace();

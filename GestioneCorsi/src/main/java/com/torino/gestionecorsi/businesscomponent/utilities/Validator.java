@@ -19,14 +19,14 @@ public class Validator {
 		boolean flag = true;
 		if(flag) {
 			String nome = corsista.getNome();
-			flag = nome.length()<=30;
+			flag = nome.length()<=30 &&nome.length() >0&& nome!=null;
 			char[]caratt = nome.toCharArray();
 			for(int i = 0; i<caratt.length && flag; i++)
 				flag = Character.isDigit(caratt[i])?false:true;
 		}
 		if(flag) {
 			String cognome = corsista.getCognome();
-			flag = cognome.length()<=30;
+			flag = cognome.length()<=30 &&cognome.length() >0&& cognome!=null;
 			char[]caratt = cognome.toCharArray();
 			for(int i = 0; i<caratt.length && flag; i++)
 				flag = Character.isDigit(caratt[i])?false:true;
